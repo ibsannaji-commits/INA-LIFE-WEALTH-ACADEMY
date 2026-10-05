@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="om">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>INA Life & Wealth Academy – Galmee</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F1F5F2;--card:#fff;--ink:#14231A;--mut:#53665A;--g:#1F6F43;--gd:#124C2D;--gold:#C8912A;--line:#D3DDD6;--ok:#E4F3E9;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A13;--card:#17251C;--ink:#E7F0E9;--mut:#9DB2A3;--g:#4CAF7A;--gd:#7BD0A0;--gold:#E0AE55;--line:#2B3F32;--ok:#1B3326}}
+:root[data-theme="dark"]{--bg:#0F1A13;--card:#17251C;--ink:#E7F0E9;--mut:#9DB2A3;--g:#4CAF7A;--gd:#7BD0A0;--gold:#E0AE55;--line:#2B3F32;--ok:#1B3326}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 "Source Sans 3",system-ui,sans-serif}
+.wrap{max-width:720px;margin:0 auto;padding:0 18px 48px}
+header{padding:36px 0 22px}
+.brand{font:700 15px "Sora",system-ui,sans-serif;color:var(--g);letter-spacing:.02em}
+h1{font:700 clamp(28px,7vw,40px)/1.15 "Sora",system-ui,sans-serif;margin:10px 0 12px;color:var(--gd)}
+.lead{color:var(--mut);margin:0;max-width:52ch}
+.badge{display:inline-block;margin-top:16px;background:var(--gold);color:#1a1200;font-weight:600;padding:6px 14px;border-radius:999px;font-size:15px}
+form,.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 18px;margin-top:18px}
+label.f,legend{display:block;font-weight:600;margin:16px 0 6px}
+legend{padding:0}
+fieldset{border:0;margin:0;padding:0}
+input[type=text],input[type=tel],select{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px}
+input:focus,select:focus,button:focus-visible,.plan input:focus-visible+span{outline:3px solid var(--gold);outline-offset:2px}
+.plans{display:grid;gap:10px}
+.plan{display:block;cursor:pointer}
+.plan input{position:absolute;opacity:0}
+.plan span{display:flex;justify-content:space-between;gap:10px;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--bg)}
+.plan input:checked+span{border-color:var(--g);background:var(--ok)}
+.plan b{font-family:"Sora",system-ui,sans-serif}
+.plan small{display:block;color:var(--mut)}
+.price{white-space:nowrap;font-weight:600;color:var(--gd)}
+.chk{display:flex;gap:10px;align-items:flex-start;margin-top:18px}
+.chk input{margin-top:5px;width:18px;height:18px;accent-color:var(--g)}
+button{font:600 17px "Sora",system-ui,sans-serif;background:var(--g);color:#fff;border:0;border-radius:12px;padding:15px 20px;width:100%;margin-top:20px;cursor:pointer}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) button{color:#04140b}}
+button.alt{background:transparent;color:var(--g);border:1.5px solid var(--g);margin-top:10px}
+.err{color:#B3261E;font-size:15px;margin:6px 0 0;min-height:1em}
+.rules{margin:8px 0 0;padding-left:20px;color:var(--mut)}
+h2{font:700 20px "Sora",system-ui,sans-serif;margin:0 0 8px;color:var(--gd)}
+pre{white-space:pre-wrap;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px;font:15px/1.5 "Source Sans 3",system-ui,sans-serif;margin:10px 0 0}
+#done{display:none}
+.note{font-size:15px;color:var(--mut)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="brand">INA LIFE & WEALTH ACADEMY</div>
+  <h1>Barattoota jalqabaa 100 keessaa tokko ta’i</h1>
+  <p class="lead">Barnoota online, training live, mentorship fi certificate. Fuula kana guuti; ergaan galmee kee WhatsApp irratti admin tti ergama.</p>
+  <span class="badge">Founding 100 – bakki murtaa’aadha</span>
+</header>
+
+<form id="f" novalidate>
+  <label class="f" for="name">Maqaa guutuu</label>
+  <input id="name" type="text" autocomplete="name" required>
+  <div class="err" id="e-name"></div>
+
+  <label class="f" for="phone">Lakkoofsa bilbilaa (WhatsApp)</label>
+  <input id="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="09XXXXXXXX" required>
+  <div class="err" id="e-phone"></div>
+
+  <label class="f" for="city">Magaalaa / Naannoo</label>
+  <input id="city" type="text" autocomplete="address-level2" required>
+  <div class="err" id="e-city"></div>
+
+  <label class="f" for="track">Track kee</label>
+  <select id="track">
+    <option value="">Filadhu…</option>
+    <option>Mindset & Motivation</option>
+    <option>Money & Wealth</option>
+    <option>Love & Life (Kaartaa Jaalalaa)</option>
+    <option>Digital Marketing & Online Income</option>
+  </select>
+  <div class="err" id="e-track"></div>
+
+  <fieldset>
+    <legend>Karoora (ji’aaf)</legend>
+    <div class="plans">
+      <label class="plan"><input type="radio" name="plan" value="Basic (199 ETB)"><span><div><b>Basic</b><small>Course hundaa + department group</small></div><div class="price">199 ETB</div></span></label>
+      <label class="plan"><input type="radio" name="plan" value="Standard (499 ETB)"><span><div><b>Standard</b><small>Course + Live Training</small></div><div class="price">499 ETB</div></span></label>
+      <label class="plan"><input type="radio" name="plan" value="Premium (999 ETB)"><span><div><b>Premium</b><small>Course + Live + Mentorship</small></div><div class="price">999 ETB</div></span></label>
+      <label class="plan"><input type="radio" name="plan" value="VIP (2,499 ETB)"><span><div><b>VIP</b><small>1-on-1 + Masterclass</small></div><div class="price">2,499 ETB</div></span></label>
+    </div>
+    <div class="err" id="e-plan"></div>
+  </fieldset>
+
+  <label class="f" for="pay">Kaffaltii akkamitti raawwatta?</label>
+  <select id="pay"><option>CBE</option><option>Telebirr</option><option>BOA</option></select>
+
+  <label class="chk"><input id="rules" type="checkbox"><span>Seera group dubbiseera, nan fudhadha.</span></label>
+  <div class="err" id="e-rules"></div>
+
+  <button type="submit">Galmee koo WhatsApp tiin ergi</button>
+</form>
+
+<div class="panel" id="done" aria-live="polite">
+  <h2>Ergaan kee qophaa’eera</h2>
+  <p id="donetxt" style="margin:0"></p>
+  <pre id="msg"></pre>
+  <button type="button" class="alt" id="copy">Ergaa koppii godhi</button>
+  <p class="note" id="copied"></p>
+</div>
+
+<div class="panel">
+  <h2>Seera group</h2>
+  <ul class="rules">
+    <li>Kabajaa fi safuu eegi.</li>
+    <li>Spam, scam, siyaasa, amantii fi dubbii jibbaa dhorkaadha.</li>
+    <li>Ad fi promotion admin qofatu hayyama.</li>
+    <li>Kaffaltii fi odeeffannoo dhuunfaa group irratti hin ergin; admin tti DM godhi.</li>
+  </ul>
+</div>
+<div class="panel">
+  <h2>Erga galmaa’een booda</h2>
+  <p style="margin:0">Receipt kaffaltii admin tti ergi. Sa’aatii 24 keessatti mirkaneessina, achiis link department group kee siif ergina.</p>
+</div>
+</div>
+
+<script>
+// Lakkoofsa admin asitti galchi: koodii biyyaa waliin, “+” malee. Fakkeenya: 2519XXXXXXXX
+var ADMIN_PHONE = "";
+
+var $ = function(id){ return document.getElementById(id); };
+var f = $("f");
+
+function setErr(id, text){ $("e-" + id).textContent = text || ""; }
+
+f.addEventListener("submit", function(ev){
+  ev.preventDefault();
+  var name = $("name").value.trim(), phone = $("phone").value.trim(), city = $("city").value.trim();
+  var track = $("track").value, pay = $("pay").value;
+  var planEl = f.querySelector('input[name="plan"]:checked');
+  var ok = true;
+  setErr("name", name ? "" : "Maqaa kee guuti."); if(!name) ok = false;
+  var digits = phone.replace(/\D/g, "");
+  setErr("phone", digits.length >= 9 ? "" : "Lakkoofsa bilbilaa sirrii galchi."); if(digits.length < 9) ok = false;
+  setErr("city", city ? "" : "Magaalaa kee galchi."); if(!city) ok = false;
+  setErr("track", track ? "" : "Track filadhu."); if(!track) ok = false;
+  setErr("plan", planEl ? "" : "Karoora filadhu."); if(!planEl) ok = false;
+  setErr("rules", $("rules").checked ? "" : "Seera fudhachuu qabda."); if(!$("rules").checked) ok = false;
+  if(!ok){ var first = f.querySelector(".err:not(:empty)"); if(first) first.scrollIntoView({block:"center"}); return; }
+
+  var text = "Akkam oolte! Galmee INA Life & Wealth Academy:\n" +
+    "Maqaa: " + name + "\nBilbila: " + phone + "\nMagaalaa: " + city + "\n" +
+    "Track: " + track + "\nKaroora: " + planEl.value + "\nKaffaltii: " + pay + "\n" +
+    "Seera fudhadheera.";
+  $("msg").textContent = text;
+  $("done").style.display = "block";
+  $("copied").textContent = "";
+  if(ADMIN_PHONE){
+    $("donetxt").textContent = "WhatsApp banamaa jira. Yoo hin banamne, tuqaa armaan gadii fayyadami.";
+    var url = "https://wa.me/" + ADMIN_PHONE + "?text=" + encodeURIComponent(text);
+    window.open(url, "_blank", "noopener");
+  } else {
+    $("donetxt").textContent = "Ergaa kana koppii godhiitii admin tti WhatsApp irratti ergi.";
+  }
+  $("done").scrollIntoView({behavior:"smooth", block:"start"});
+});
+
+$("copy").addEventListener("click", function(){
+  var text = $("msg").textContent;
+  function ok(){ $("copied").textContent = "Koppii ta’eera."; }
+  function fail(){ $("copied").textContent = "Koppii hin ta’in; ergaa olitti filatii ofii kee koppii godhi."; }
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(ok, fail);
+  } else { fail(); }
+});
+</script>
+</body>
+</html>

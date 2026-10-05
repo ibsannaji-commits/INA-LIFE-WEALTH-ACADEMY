@@ -1,16 +1,1062 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="om">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>INA Life & Wealth Academy</title>
-<meta name="description" content="INA Life & Wealth Academy - Learn, Build, Apply, Grow.">
-<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>INA Life & Wealth Academy | Learn · Build · Apply · Grow</title>
+  <meta name="description" content="INA LIFE & WEALTH ACADEMY – Online courses, live training, mentorship, certificate fi community. Mindset, Wealth, Love & Digital Marketing.">
+  <link rel="icon" type="image/png" href="ina-logo.png">
+  <style>
+    :root {
+      --gold: #D4AF37;
+      --gold-light: #F5D76E;
+      --gold-dark: #B8860B;
+      --green: #1B8A3E;
+      --green-light: #2ECC71;
+      --green-dark: #0E5C28;
+      --dark: #0A0A0A;
+      --dark-card: #141414;
+      --text: #F5F5F5;
+      --text-muted: #B0B0B0;
+      --radius: 16px;
+      --shadow: 0 10px 40px rgba(0,0,0,0.4);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ========== HEADER ========== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(212,175,55,0.25);
+      transition: all 0.3s ease;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    .logo-nav img {
+      height: 48px;
+      width: auto;
+    }
+
+    .logo-text {
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--gold);
+      letter-spacing: 0.5px;
+    }
+
+    .logo-text span {
+      color: var(--green-light);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.75rem;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--gold);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.7rem 1.6rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      border: none;
+      font-size: 0.95rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: #111;
+      box-shadow: 0 4px 20px rgba(212,175,55,0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(212,175,55,0.5);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--gold);
+      color: var(--gold);
+    }
+
+    .btn-outline:hover {
+      background: var(--gold);
+      color: #111;
+    }
+
+    .btn-green {
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      color: white;
+    }
+
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--gold);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 7rem 1.5rem 4rem;
+      background: 
+        radial-gradient(ellipse at 30% 20%, rgba(212,175,55,0.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 80%, rgba(27,138,62,0.1) 0%, transparent 50%),
+        var(--dark);
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 900px;
+    }
+
+    .hero-logo {
+      width: 220px;
+      height: auto;
+      margin-bottom: 1.5rem;
+      filter: drop-shadow(0 0 30px rgba(212,175,55,0.4));
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--green-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero .tagline {
+      font-size: 1.35rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+      letter-spacing: 2px;
+      font-weight: 500;
+    }
+
+    .hero .tagline strong {
+      color: var(--gold);
+    }
+
+    .hero .subtitle {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .pillars {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .pillar {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(212,175,55,0.2);
+      border-radius: 12px;
+      padding: 1rem 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .pillar span {
+      font-size: 1.3rem;
+    }
+
+    /* ========== SECTIONS ========== */
+    section {
+      padding: 5rem 1.5rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    /* ========== ABOUT ========== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-text h3 {
+      font-size: 1.5rem;
+      color: var(--green-light);
+      margin-bottom: 1rem;
+    }
+
+    .about-text p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .about-text ul {
+      list-style: none;
+      margin-top: 1.5rem;
+    }
+
+    .about-text li {
+      padding: 0.5rem 0;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .about-text li::before {
+      content: "✓";
+      color: var(--green-light);
+      font-weight: bold;
+    }
+
+    .about-card {
+      background: var(--dark-card);
+      border: 1px solid rgba(212,175,55,0.2);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .stat {
+      text-align: center;
+      padding: 1.25rem;
+      background: rgba(212,175,55,0.06);
+      border-radius: 12px;
+    }
+
+    .stat .num {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--gold);
+    }
+
+    .stat .label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    /* ========== COURSES ========== */
+    .courses {
+      background: linear-gradient(180deg, var(--dark) 0%, #0d0d0d 100%);
+    }
+
+    .course-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .course-card {
+      background: var(--dark-card);
+      border: 1px solid rgba(212,175,55,0.15);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .course-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--gold), var(--green));
+    }
+
+    .course-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(212,175,55,0.4);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    }
+
+    .course-icon {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .course-card h3 {
+      font-size: 1.2rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .course-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .course-meta {
+      font-size: 0.85rem;
+      color: var(--green-light);
+      font-weight: 600;
+    }
+
+    /* ========== PRICING ========== */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .price-card {
+      background: var(--dark-card);
+      border: 1px solid rgba(212,175,55,0.15);
+      border-radius: var(--radius);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .price-card.featured {
+      border-color: var(--gold);
+      transform: scale(1.03);
+      box-shadow: 0 0 40px rgba(212,175,55,0.15);
+    }
+
+    .price-card.featured::after {
+      content: "Most Popular";
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: #111;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.9rem;
+      border-radius: 20px;
+    }
+
+    .price-card:hover {
+      border-color: var(--gold);
+    }
+
+    .price-card h3 {
+      font-size: 1.15rem;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .price-card .price {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--gold);
+      margin: 0.75rem 0;
+    }
+
+    .price-card .price span {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+
+    .price-card ul {
+      list-style: none;
+      text-align: left;
+      margin: 1.25rem 0;
+    }
+
+    .price-card li {
+      padding: 0.4rem 0;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .price-card li::before {
+      content: "✓";
+      color: var(--green-light);
+      font-weight: bold;
+    }
+
+    /* ========== ENROLLMENT ========== */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      counter-reset: step;
+    }
+
+    .step {
+      background: var(--dark-card);
+      border: 1px solid rgba(212,175,55,0.15);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      position: relative;
+      counter-increment: step;
+    }
+
+    .step::before {
+      content: counter(step);
+      position: absolute;
+      top: -14px;
+      left: 1.5rem;
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: #111;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+
+    .step h4 {
+      margin-top: 0.5rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .step p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* ========== FOUNDING ========== */
+    .founding {
+      background: linear-gradient(135deg, rgba(212,175,55,0.08), rgba(27,138,62,0.08));
+      border-top: 1px solid rgba(212,175,55,0.2);
+      border-bottom: 1px solid rgba(212,175,55,0.2);
+    }
+
+    .founding-box {
+      background: var(--dark-card);
+      border: 2px solid var(--gold);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+      box-shadow: 0 0 50px rgba(212,175,55,0.15);
+    }
+
+    .founding-box h2 {
+      color: var(--gold);
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .founding-box p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .founding-benefits {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .founding-benefits span {
+      background: rgba(212,175,55,0.12);
+      border: 1px solid rgba(212,175,55,0.3);
+      padding: 0.4rem 0.9rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: var(--gold-light);
+    }
+
+    /* ========== CONTACT ========== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+
+    .contact-info h3 {
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .contact-item .icon {
+      font-size: 1.4rem;
+      min-width: 30px;
+    }
+
+    .contact-item a {
+      color: var(--green-light);
+      text-decoration: none;
+    }
+
+    .contact-item a:hover {
+      text-decoration: underline;
+    }
+
+    .payment-box {
+      background: var(--dark-card);
+      border: 1px solid rgba(212,175,55,0.2);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+    }
+
+    .payment-box h4 {
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .payment-box p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .payment-box .note {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: #080808;
+      border-top: 1px solid rgba(212,175,55,0.15);
+      padding: 3rem 1.5rem 1.5rem;
+      text-align: center;
+    }
+
+    .footer-logo {
+      width: 100px;
+      margin-bottom: 1rem;
+      opacity: 0.9;
+    }
+
+    footer p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    footer .motto {
+      color: var(--gold);
+      font-weight: 600;
+      margin: 1rem 0;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 1.25rem 0;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+
+    .copyright {
+      margin-top: 1.5rem;
+      font-size: 0.8rem;
+      color: #666;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+      }
+
+      .mobile-toggle {
+        display: block;
+      }
+
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .price-card.featured {
+        transform: none;
+      }
+
+      .hero-logo {
+        width: 160px;
+      }
+
+      .pillars {
+        gap: 0.75rem;
+      }
+
+      .pillar {
+        padding: 0.7rem 1rem;
+        font-size: 0.85rem;
+      }
+    }
+
+    /* Mobile menu open state */
+    nav.open ul {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 70px;
+      left: 0;
+      right: 0;
+      background: rgba(10,10,10,0.98);
+      padding: 1.5rem;
+      gap: 1rem;
+      border-bottom: 1px solid rgba(212,175,55,0.2);
+    }
+  </style>
 </head>
 <body>
-<header class="site-header"><div class="container nav"><a class="brand" href="index.html">INA <span>LWA</span></a><button class="menu" aria-label="Open menu">☰</button><nav><a href="index.html">Home</a><a href="courses.html">Courses</a><a href="membership.html">Membership</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav></div></header>
-<main>
-<section class="hero"><div class="container hero-grid"><div><p class="eyebrow">INA LIFE & WEALTH ACADEMY</p><h1>Learn. Build. Apply. Grow.</h1><p class="lead">Barnoota online, training, mentorship, certificate fi community nama jireenya, maallaqa fi digital business isaa fooyyeessuuf qophaa'e.</p><div class="actions"><a class="btn primary" href="enroll.html">Enroll Now</a><a class="btn secondary" href="courses.html">View Courses</a></div><p class="note">Financial education fi course completion qofa; galii ykn bu’aa mirkanaa’aa hin waadnu.</p></div><div class="hero-card"><div class="card-icon">✦</div><h2>Beekumsa → Hojii</h2><p>Knowledge → Understanding → Transformation → Action → Better Life</p><a href="masterclass.html">Join Free Masterclass →</a></div></div></section>
-<section class="section"><div class="container"><p class="eyebrow">WHAT WE TEACH</p><h2>Learning tracks afur</h2><div class="cards"><article class="card"><div class="icon">🧠</div><h3>Mindset & Personal Development</h3><p>Confidence, discipline, goals, habits, leadership fi time management.</p><a href="courses.html#mindset">Learn more →</a></article><article class="card"><div class="icon">💰</div><h3>Money & Wealth</h3><p>Budgeting, saving, debt, business basics, risk fi long-term planning.</p><a href="courses.html#wealth">Learn more →</a></article><article class="card"><div class="icon">❤️</div><h3>Love & Life</h3><p>Communication, trust, boundaries, emotional intelligence fi conflict resolution.</p><a href="courses.html#love">Learn more →</a></article><article class="card"><div class="icon">📱</div><h3>Digital & Online Income</h3><p>Personal brand, content, marketing, digital products fi ethical online sales.</p><a href="courses.html#digital">Learn more →</a></article></div></div></section>
-<section class="section alt"><div class="container split"><div><p class="eyebrow">HOW IT WORKS</p><h2>Barnoota irraa gara hojiiitti</h2><p>Course tokko keessatti lesson, practical exercise, assignment, quiz, final project fi assessment argatta.</p></div><div class="steps"><div><b>01</b><span>Choose your track</span></div><div><b>02</b><span>Learn & practice</span></div><div><b>03</b><span>Submit & get feedback</span></div><div><b>04</b><span>Complete & certify</span></div></div></div></section>
-<section class="cta"><div class="container"><h2>Jalqaba kee har'a godhi</h2><p>Free masterclass irraa jalqabi ykn course siif mijatu filadhu.</p><a class="btn light" href="enroll.html">Start Learning</a></div></section>
-</main><footer><div class="container footer-grid"><div><a class="brand" href="index.html">INA <span>LWA</span></a><p>Learn • Build • Apply • Grow</p></div><div><h4>Explore</h4><a href="courses.html">Courses</a><a href="membership.html">Membership</a><a href="masterclass.html">Masterclass</a></div><div><h4>Support</h4><a href="contact.html">Contact</a><a href="certificate.html">Verify Certificate</a><a href="policies.html">Policies</a></div></div><div class="container copyright">© 2026 INA Life & Wealth Academy. Replace bracketed contact details before publishing.</div></footer><script src="script.js"></script></body></html>
+
+  <!-- HEADER -->
+  <header>
+    <div class="nav-container">
+      <a href="#home" class="logo-nav">
+        <img src="ina-logo.png" alt="INA LWA Logo">
+        <div class="logo-text">INA <span>LWA</span></div>
+      </a>
+      <nav id="mainNav">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#courses">Courses</a></li>
+          <li><a href="#pricing">Membership</a></li>
+          <li><a href="#enroll">Enroll</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="#founding" class="btn btn-primary">Founding 100</a>
+      <button class="mobile-toggle" onclick="document.getElementById('mainNav').classList.toggle('open')" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <img src="ina-logo.png" alt="INA Life & Wealth Academy" class="hero-logo">
+      <h1>INA LIFE & WEALTH ACADEMY</h1>
+      <p class="tagline"><strong>Learn</strong> · <strong>Build</strong> · <strong>Apply</strong> · <strong>Grow</strong></p>
+      <p class="subtitle">
+        Barnoota online, live training, mentorship, certificate fi community tokkummaa.<br>
+        Online courses, mentorship & a thriving community for life & wealth transformation.
+      </p>
+      <div class="hero-buttons">
+        <a href="#courses" class="btn btn-primary">View Courses</a>
+        <a href="#pricing" class="btn btn-outline">Membership Plans</a>
+      </div>
+      <div class="pillars">
+        <div class="pillar"><span>💡</span> Learn</div>
+        <div class="pillar"><span>⚙️</span> Build</div>
+        <div class="pillar"><span>🎯</span> Apply</div>
+        <div class="pillar"><span>📈</span> Grow</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="section-title">
+        <h2>About INA LWA</h2>
+        <p>Learn · Build · Apply · Grow</p>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <h3>Waa'ee Keenya / Who We Are</h3>
+          <p>
+            INA Life & Wealth Academy (INA LWA) is a practical online academy focused on transforming lives through mindset, financial literacy, relationships, and digital skills.
+          </p>
+          <p>
+            Nuuf barnoota online, training live, mentorship, certificate fi community tokkummaa ni qopheessina. Kaayyoon keenya: of-amantaa, beekumsa maallaqaa, jaalala fi galii online guddisuu.
+          </p>
+          <ul>
+            <li>4 Core Tracks (Mindset, Wealth, Love, Digital)</li>
+            <li>Live Training & Mentorship</li>
+            <li>Official Certificate System</li>
+            <li>Active Community & Network</li>
+            <li>Founding 100 Special Benefits</li>
+          </ul>
+        </div>
+        <div class="about-card">
+          <div class="stat-grid">
+            <div class="stat">
+              <div class="num">4</div>
+              <div class="label">Core Courses</div>
+            </div>
+            <div class="stat">
+              <div class="num">90</div>
+              <div class="label">Days / Track</div>
+            </div>
+            <div class="stat">
+              <div class="num">4</div>
+              <div class="label">Membership Tiers</div>
+            </div>
+            <div class="stat">
+              <div class="num">100</div>
+              <div class="label">Founding Spots</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COURSES -->
+  <section class="courses" id="courses">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Courses</h2>
+        <p>Barnoota 4 – Choose your track and grow</p>
+      </div>
+      <div class="course-grid">
+        <div class="course-card">
+          <div class="course-icon">🧠</div>
+          <h3>01 – Mindset & Motivation</h3>
+          <p>Yaada fi amala jijjiiruu, kaayyoo kaa’uu, of-amantaa fi dhaabbataa ta’uu. Transform your thinking and build lasting confidence.</p>
+          <div class="course-meta">Course: Mindset Jijjiiruu · 90 Days</div>
+        </div>
+        <div class="course-card">
+          <div class="course-icon">💰</div>
+          <h3>02 – Money & Wealth</h3>
+          <p>Beekumsa maallaqaa, kuusaa, invastimantii fi dureeyyii qabeenyaa. Master financial literacy and build real wealth.</p>
+          <div class="course-meta">Course: Financial Literacy & Wealth · 90 Days</div>
+        </div>
+        <div class="course-card">
+          <div class="course-icon">❤️</div>
+          <h3>03 – Love & Life</h3>
+          <p>Jaalala, hariiroo fi jireenya – Kaartaa Jaalalaa irratti hundaa’uun. Build healthy relationships and a meaningful life.</p>
+          <div class="course-meta">Course: Kaartaa Jaalalaa · 90 Days</div>
+        </div>
+        <div class="course-card">
+          <div class="course-icon">📱</div>
+          <h3>04 – Digital Marketing & Online Income</h3>
+          <p>Marketing dijitaalaa, bu’aa online, content fi gurgurtaa. Learn digital skills and create online income streams.</p>
+          <div class="course-meta">Course: Digital Marketing · 90 Days</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="container">
+      <div class="section-title">
+        <h2>Membership Plans</h2>
+        <p>Karoora filadhu – Choose the plan that fits your goals</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <h3>Basic</h3>
+          <div class="price">199 <span>ETB / mo</span></div>
+          <ul>
+            <li>All 4 Courses access</li>
+            <li>Department Groups</li>
+            <li>Community access</li>
+            <li>Certificate eligibility</li>
+          </ul>
+          <a href="#contact" class="btn btn-outline" style="width:100%; margin-top:0.5rem;">Get Started</a>
+        </div>
+        <div class="price-card">
+          <h3>Standard</h3>
+          <div class="price">499 <span>ETB / mo</span></div>
+          <ul>
+            <li>Everything in Basic</li>
+            <li>Live Training sessions</li>
+            <li>Priority Q&A</li>
+            <li>Certificate eligibility</li>
+          </ul>
+          <a href="#contact" class="btn btn-outline" style="width:100%; margin-top:0.5rem;">Get Started</a>
+        </div>
+        <div class="price-card featured">
+          <h3>Premium</h3>
+          <div class="price">999 <span>ETB / mo</span></div>
+          <ul>
+            <li>Everything in Standard</li>
+            <li>Mentorship access</li>
+            <li>Premium Members Group</li>
+            <li>Priority support</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary" style="width:100%; margin-top:0.5rem;">Get Started</a>
+        </div>
+        <div class="price-card">
+          <h3>VIP</h3>
+          <div class="price">2,499 <span>ETB / mo</span></div>
+          <ul>
+            <li>Everything in Premium</li>
+            <li>1-on-1 Mentorship</li>
+            <li>Masterclass access</li>
+            <li>VIP Mentorship Group</li>
+          </ul>
+          <a href="#contact" class="btn btn-outline" style="width:100%; margin-top:0.5rem;">Get Started</a>
+        </div>
+      </div>
+      <p style="text-align:center; margin-top:1.5rem; color:var(--text-muted); font-size:0.9rem;">
+        * Test prices. Founding 100 members receive special discounts.
+      </p>
+    </div>
+  </section>
+
+  <!-- ENROLLMENT FLOW -->
+  <section id="enroll">
+    <div class="container">
+      <div class="section-title">
+        <h2>How to Enroll</h2>
+        <p>Sirna Galmee – Simple steps to join INA Academy</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <h4>1. Join Community</h4>
+          <p>Seeni WhatsApp Community ykn link bio irraa. Welcome message argatta.</p>
+        </div>
+        <div class="step">
+          <h4>2. Choose Track</h4>
+          <p>Mindset / Wealth / Love / Digital – track kee filadhu.</p>
+        </div>
+        <div class="step">
+          <h4>3. Register & Pay</h4>
+          <p>Form galmee guuti, karoora kaffali, receipt admin tti ergi.</p>
+        </div>
+        <div class="step">
+          <h4>4. Get Access</h4>
+          <p>Admin mirkaneesse → department group link argatta → learn!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUNDING 100 -->
+  <section class="founding" id="founding">
+    <div class="container">
+      <div class="founding-box">
+        <h2>🚀 FOUNDING 100</h2>
+        <p>
+          Barattoota jalqabaa 100 keessaa tokko ta’aa!<br>
+          Be among the first 100 students and unlock exclusive benefits.
+        </p>
+        <div class="founding-benefits">
+          <span>Discount on Membership</span>
+          <span>Founding Member Certificate</span>
+          <span>Private Community</span>
+          <span>Monthly Live Session</span>
+          <span>Direct Feedback Channel</span>
+        </div>
+        <a href="#contact" class="btn btn-primary">Claim Your Spot Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Contact & Payment</h2>
+        <p>Qunnamtii fi Kaffaltii</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Get in Touch</h3>
+          <div class="contact-item">
+            <span class="icon">📧</span>
+            <div>
+              <strong>Email</strong><br>
+              <a href="mailto:Kinghbb40@gmail.com">Kinghbb40@gmail.com</a><br>
+              <a href="mailto:support@inaacademy.com">support@inaacademy.com</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="icon">🌐</span>
+            <div>
+              <strong>Website</strong><br>
+              www.inaacademy.com
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="icon">📍</span>
+            <div>
+              <strong>Location</strong><br>
+              Finfinnee / Bole Michael, Ethiopia
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="icon">🕐</span>
+            <div>
+              <strong>Working Hours</strong><br>
+              Monday – Saturday · 08:00 – 20:00
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="icon">💬</span>
+            <div>
+              <strong>WhatsApp Business</strong><br>
+              Join our Community groups for courses, support & updates.
+            </div>
+          </div>
+        </div>
+        <div class="payment-box">
+          <h4>💳 Payment Methods (Kaffaltii)</h4>
+          <p><strong>Abyssinia:</strong> 202322654</p>
+          <p><strong>Oro International:</strong> 1598202400001</p>
+          <p><strong>Oro Co-op:</strong> 1000067502087</p>
+          <p><strong>EBIRR / Telebirr:</strong> 0944615768</p>
+          <p><strong>Awash:</strong> 01425492667200</p>
+          <p class="note">
+            ✅ After payment, send receipt (screenshot) to Admin via DM.<br>
+            ✅ Admin confirms within 24 hours.<br>
+            ⚠️ Do not send payment details in public groups.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <img src="ina-logo.png" alt="INA LWA" class="footer-logo">
+    <p class="motto">Learn · Build · Apply · Grow</p>
+    <p>INA LIFE & WEALTH ACADEMY</p>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#courses">Courses</a>
+      <a href="#pricing">Membership</a>
+      <a href="#founding">Founding 100</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <p class="copyright">
+      © 2026 INA Life & Wealth Academy. All rights reserved.<br>
+      Prepared by Ibsan Naaji · Ebla 2026
+    </p>
+  </footer>
+
+  <script>
+    // Simple mobile menu close on link click
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mainNav').classList.remove('open');
+      });
+    });
+  </script>
+</body>
+</html>

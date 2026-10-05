@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="om">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>INA Life & Wealth Academy | Barnoota Jireenyaa fi Qabeenyaa</title>
+<meta name="description" content="INA Life & Wealth Academy: Mindset, Maallaqa, Jaalala fi Jireenya, Digital Marketing. Afaan Oromootiin.">
+<style>
+:root{--ink:#0b2e22;--ink2:#14473a;--gold:#d4a72c;--gold2:#f0d27a;--mist:#f2f6f1;--line:#d9e3da;--text:#17251f;--mute:#53665d;--white:#fff}
+@media (prefers-color-scheme:dark){:root{--mist:#0e1a15;--line:#23382f;--text:#e8f0ea;--mute:#a3b5ab;--white:#12221b}}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;color:var(--text);background:var(--mist);line-height:1.6}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:10;background:var(--ink);color:#fff}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{font-weight:800;letter-spacing:.3px;text-decoration:none}
+.brand b{color:var(--gold)}
+nav{display:flex;gap:18px;align-items:center}
+nav a{text-decoration:none;font-size:15px;opacity:.9}
+nav a:hover{color:var(--gold2)}
+.menu{display:none;background:none;border:1px solid #ffffff55;color:#fff;border-radius:8px;padding:6px 12px;font-size:15px}
+@media(max-width:760px){.menu{display:block}nav{display:none;position:absolute;top:60px;left:0;right:0;background:var(--ink);flex-direction:column;padding:14px 20px 20px;align-items:flex-start}nav.open{display:flex}}
+.hero{background:linear-gradient(160deg,var(--ink),var(--ink2));color:#fff;padding:72px 0 64px}
+.hero h1{font-size:clamp(32px,6vw,56px);line-height:1.1;max-width:14em}
+.hero p{max-width:34em;margin:18px 0 28px;color:#d6e6dc;font-size:18px}
+.btn{display:inline-block;border:0;cursor:pointer;font:inherit;font-weight:700;text-decoration:none;padding:12px 22px;border-radius:10px;background:var(--gold);color:#1a1405}
+.btn:hover{background:var(--gold2)}
+.steps{list-style:none;padding:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}.steps li{background:var(--mist);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:12px 14px}.steps b{display:block}details{border-top:1px solid var(--line);padding:8px 0}summary{cursor:pointer;font-weight:600}details p{margin-top:6px}.note{font-size:13px;color:var(--mute);border-left:3px solid var(--gold);padding-left:10px;flex:none}
+.btn.alt{background:transparent;color:inherit;border:2px solid currentColor;margin-left:8px}
+.facts{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:34px;color:#bcd2c5;font-size:15px}
+section{padding:60px 0}
+h2{font-size:clamp(24px,4vw,34px);margin-bottom:8px}
+.lead{color:var(--mute);max-width:40em;margin-bottom:28px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:10px}
+.card h3{font-size:19px}
+.card p{color:var(--mute);font-size:15px;flex:1}
+.card .btn{align-self:flex-start;padding:9px 16px;font-size:14px}
+.price{font-size:28px;font-weight:800}
+.price small{font-size:14px;font-weight:500;color:var(--mute)}
+.card.top{border:2px solid var(--gold)}
+.tag{font-size:13px;font-weight:700;color:var(--ink2)}
+.alt-bg{background:var(--white);border-block:1px solid var(--line)}
+form{display:grid;gap:14px;max-width:560px}
+label{font-weight:600;font-size:15px;display:grid;gap:6px}
+input,select,textarea{font:inherit;padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:var(--mist);color:var(--text);width:100%}
+textarea{min-height:110px;resize:vertical}
+.err{color:#c0392b;font-size:14px;min-height:1em;font-weight:500}
+.ok{background:var(--mist);border:1px solid var(--gold);border-radius:12px;padding:16px;margin-top:6px}
+.ok p{margin:6px 0}
+.contact{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));align-items:start}
+.cl{list-style:none;padding:0;display:grid;gap:12px}
+footer{background:var(--ink);color:#bcd2c5;padding:30px 0;font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+.float{position:fixed;right:16px;bottom:16px;z-index:9;background:#25d366;color:#05301a;font-weight:700;text-decoration:none;padding:12px 18px;border-radius:999px;box-shadow:0 4px 14px #0004}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="brand" href="#top">INA <b>LWA</b></a>
+  <button class="menu" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav id="nav" aria-label="Menu guddaa">
+    <a href="#kutaalee">Kutaalee</a><a href="#akkaataa">Akkaataa</a><a href="#miseensa">Miseensummaa</a><a href="#hawaasa">Hawaasa</a><a href="#galmaa">Galmaa'i</a><a href="#ragaa">Ragaa</a><a href="#quunnamtii">Quunnamtii</a>
+  </nav>
+</div></header>
+
+<main id="top">
+<div class="hero"><div class="wrap">
+  <h1>Kitaaba irraa ka'ee, jireenya fooyya'aa hanga ragaa.</h1>
+  <p>INA Life & Wealth Academy: Learn, Build, Apply, Grow. Afaan Oromootiin kutaalee afur, kuusaa barnootaa 10 fi certificate mirkanaa'aa.</p>
+  <a class="btn" href="#galmaa">Amma galmaa'i</a><a class="btn alt" id="joinWa" href="#">WhatsAppiin nu quunnami</a>
+  <div class="facts"><span>Kutaalee 4</span><span>Course 10</span><span>Miseensummaa ji'aan</span><span>Certificate ID mirkaneessuu</span></div>
+</div></div>
+
+<section id="kutaalee"><div class="wrap">
+  <h2>Kutaalee fi Course</h2>
+  <p class="lead">Kutaa tokko tuqxuu, course tokko banuun mata-dureewwan isaa ilaali. "Kana filadhu" tuqxuu foormii galmaa'insaa guutama.</p>
+  <div class="grid">
+    <div class="card"><h3>Mindset, Motivation & Personal Development</h3>
+      <details><summary>Mindset Jijjiiruu</summary><p>Of beekuu, confidence, discipline, goal setting, habit building, time management, failure irraa barachuu, leadership.</p></details>
+      <details><summary>Motivation & Inspiration</summary><p>Kaayyoo jireenyaa, abdii hin kutanne, action plan, self-development, personal transformation.</p></details>
+      <details><summary>90-Day Transformation</summary><p>Guyyaa 1-30 Mindset, 31-60 Skill, 61-90 Execution.</p></details>
+      <button class="btn" data-pick="Mindset & Motivation">Kana filadhu</button></div>
+    <div class="card"><h3>Money, Wealth & Entrepreneurship</h3>
+      <details><summary>Financial Literacy & Wealth Creation (Sa'aatii 30)</summary><p>Income vs expense, saving, budgeting, debt management, emergency fund, investing basics, business basics, asset vs liability, multiple income streams, karoora qabeenyaa yeroo dheeraa.</p></details>
+      <details><summary>Hidda Miliyeenaraa</summary><p>Maallaqaan qabeenya horattee walabummaa maaliif dhabda? Moduloota: Mindset, Income, Saving, Skill, Business, Investment, Asset, Financial freedom, Wealth protection, Long-term wealth plan.</p></details>
+      <p class="note">Barnoonni kun financial education fi risk management irratti hundaa'a; galii ykn miliyeenaarii ta'uu hin mirkaneessu.</p>
+      <button class="btn" data-pick="Money & Wealth">Kana filadhu</button></div>
+    <div class="card"><h3>Love, Relationship & Life</h3>
+      <details><summary>Kaartaa Jaalalaa</summary><p>Of jaallachuu, of hubachuu, emotional intelligence, attraction, communication, trust, boundaries, healthy relationship, conflict resolution, break-up irraa recovery, fuudhaa fi heeruma, maatii fi itti gaafatamummaa.</p></details>
+      <details><summary>Karaan Jaalalaan Imalu</summary><p>Of beekuu, nama hubachuu, walqunnamtii, amanamummaa, rakkoo furuu, fuuldura waliin ijaaruu.</p></details>
+      <button class="btn" data-pick="Love & Life">Kana filadhu</button></div>
+    <div class="card"><h3>Digital Marketing & Online Income</h3>
+      <details><summary>Digital Marketing</summary><p>Personal brand, Facebook, TikTok, YouTube, Telegram, WhatsApp Business, content creation, copywriting, Canva, AI tools, SEO, Facebook Ads, lead generation, sales funnel.</p></details>
+      <details><summary>Online Business</summary><p>Digital products, e-book, audiobook, online course, affiliate marketing, creator economy, marketplace, email/WhatsApp marketing.</p></details>
+      <details><summary>0 → Online Income</summary><p>Project tokko hojjechuun: Idea, Product, Content, Audience, Marketing, Sales, Customer, Reinvestment.</p></details>
+      <button class="btn" data-pick="Digital Marketing & Online Income">Kana filadhu</button></div>
+  </div>
+</div></section>
+
+<section id="akkaataa" class="alt-bg"><div class="wrap">
+  <h2>Akkaataa Barnootaa</h2>
+  <p class="lead">Course tokko torbaan afurii keessatti xumurama.</p>
+  <ol class="steps">
+    <li><b>Torbaan 1</b>Video lessons</li>
+    <li><b>Torbaan 2</b>Live training</li>
+    <li><b>Torbaan 3</b>Assignment fi marii</li>
+    <li><b>Torbaan 4</b>Assessment fi project</li>
+  </ol>
+  <h3 style="margin:30px 0 8px">Karaa Certificate argachuu</h3>
+  <p class="lead" style="margin-bottom:12px">Course xumuruu qofa certificate hin argamsiisu. Sadarkaa kana hunda raawwachuu qabda:</p>
+  <ol class="steps">
+    <li><b>1</b>Registration</li><li><b>2</b>Course</li><li><b>3</b>Attendance</li><li><b>4</b>Assignment</li><li><b>5</b>Final Assessment</li><li><b>6</b>Project</li><li><b>7</b>Pass</li><li><b>8</b>Certificate</li>
+  </ol>
+  <p class="lead" style="margin:18px 0 0">Certificate tokkoon tokkoon isaa Certificate ID addaa qaba, gaaffii "Ragaa" jedhu irratti mirkaneeffachuu dandeessa.</p>
+</div></section>
+
+<section id="miseensa" class="alt-bg"><div class="wrap">
+  <h2>Karoora Miseensummaa</h2>
+  <p class="lead">Gatiin ji'aaf kaffalamu (ETB). Gatiin amma yeroo qorannoo ti; hojii eegaluu dura ni mirkanaa'a.</p>
+  <div class="grid">
+    <div class="card"><h3>Basic</h3><div class="price">199 <small>ETB / ji'a</small></div><p>Courses hunda.</p><button class="btn" data-plan="Basic">Basic filadhu</button></div>
+    <div class="card"><h3>Standard</h3><div class="price">499 <small>ETB / ji'a</small></div><p>Courses + Live Training.</p><button class="btn" data-plan="Standard">Standard filadhu</button></div>
+    <div class="card top"><span class="tag">Filannoo guddaa</span><h3>Premium</h3><div class="price">999 <small>ETB / ji'a</small></div><p>Courses + Live Training + Mentorship.</p><button class="btn" data-plan="Premium">Premium filadhu</button></div>
+    <div class="card"><h3>VIP</h3><div class="price">2,499 <small>ETB / ji'a</small></div><p>1-on-1 + Mentorship + Masterclass.</p><button class="btn" data-plan="VIP">VIP filadhu</button></div>
+  </div>
+</div></section>
+
+<section id="hawaasa" class="alt-bg"><div class="wrap">
+  <h2>Hawaasa fi Founding 100</h2>
+  <p class="lead">Hawaasni tokko kutaa hundaaf garee isaa qaba. Gara garee kamitti makamuu akka barbaaddu ergaa WhatsAppiin nuuf ergi.</p>
+  <div class="grid">
+    <div class="card"><h3>INA Academy Community</h3><p>Garee ijoo hunda miseensaa.</p><a class="btn wag" data-g="INA Academy Community" href="#">Makami</a></div>
+    <div class="card"><h3>Garee Kutaa</h3><p>Mindset, Money & Wealth, Love & Life, Digital Marketing & Online Income.</p><a class="btn wag" data-g="garee kutaa" href="#">Makami</a></div>
+    <div class="card"><h3>INA Premium / VIP Mentorship</h3><p>Miseensota Premium fi VIP qofaaf.</p><a class="btn wag" data-g="INA Premium / VIP Mentorship" href="#">Gaafadhu</a></div>
+    <div class="card top"><span class="tag">Namoota 100 jalqabaa</span><h3>INA Academy Founding 100</h3><p>Discount, Founding Member Certificate, hawaasa dhuunfaa, live session ji'aan fi yaada kee kennuuf carraa.</p><button class="btn" data-pick="" data-founding="1">Founding 100 tti galmaa'i</button></div>
+  </div>
+</div></section>
+
+<section id="galmaa"><div class="wrap">
+  <h2>Galmaa'i</h2>
+  <p class="lead">Foormii guuti. Erga ergite booda WhatsApp keenya ni banama, ergaan kee qophaa'ee jira; ergi tuqi qofa. Kaffaltiin ibsa WhatsAppiin argattu booda raawwatama.</p>
+  <form id="enrollForm" novalidate>
+    <label>Maqaa guutuu<input name="name" autocomplete="name" required><span class="err" data-for="name"></span></label>
+    <label>Lakkoofsa bilbilaa (WhatsApp)<input name="phone" type="tel" autocomplete="tel" placeholder="+251 9..." required><span class="err" data-for="phone"></span></label>
+    <label>Kutaa<select name="dept" required><option value="">Filadhu</option><option>Mindset & Motivation</option><option>Money & Wealth</option><option>Love & Life</option><option>Digital Marketing & Online Income</option></select><span class="err" data-for="dept"></span></label>
+    <label>Karoora<select name="plan" required><option value="">Filadhu</option><option>Basic (199 ETB)</option><option>Standard (499 ETB)</option><option>Premium (999 ETB)</option><option>VIP (2,499 ETB)</option></select><span class="err" data-for="plan"></span></label>
+    <label style="font-weight:500;display:flex;gap:10px;align-items:center"><input type="checkbox" name="founding" style="width:auto">Founding 100 tti galmaa'uu barbaada</label>
+    <button class="btn" type="submit">Galmaa'insa ergi</button>
+  </form>
+  <div id="enrollOk" class="ok" hidden></div>
+</div></section>
+
+<section id="ragaa" class="alt-bg"><div class="wrap">
+  <h2>Ragaa Mirkaneessi</h2>
+  <p class="lead">Lakkoofsa ragaa (fknf. INA-2026-0001) galchuun ragaan dhugaa ta'uu isaa mirkaneeffadhu.</p>
+  <form id="verifyForm" novalidate>
+    <label>Lakkoofsa ragaa<input name="id" placeholder="INA-2026-0001" autocomplete="off"></label>
+    <button class="btn" type="submit">Mirkaneessi</button>
+  </form>
+  <div id="verifyOut" class="ok" hidden aria-live="polite"></div>
+</div></section>
+
+<section id="quunnamtii"><div class="wrap">
+  <h2>Nu Quunnamaa</h2>
+  <div class="contact">
+    <div>
+      <ul class="cl">
+        <li><b>Imeelii</b><br><a href="mailto:ibsannaji@gmail.com">ibsannaji@gmail.com</a></li>
+        <li><b>Bilbila / WhatsApp</b><br><a href="tel:+251944615768">+251 944 615 768</a></li>
+        <li><b>Teessoo</b><br>Finfinnee</li>
+        <li><b>Barsiisaa ta'uu barbaaddaa?</b><br><a class="wag" data-g="barsiisaa ta'uu" href="#">WhatsAppiin nu quunnami</a></li>
+        <li><b>Marsariitii</b><br>inalifewealthacademy.com.free</li>
+      </ul>
+    </div>
+    <form id="contactForm" novalidate>
+      <label>Maqaa<input name="name" autocomplete="name"></label>
+      <label>Ergaa<textarea name="msg" required></textarea><span class="err" data-for="msg"></span></label>
+      <button class="btn" type="submit" data-via="wa">WhatsAppiin ergi</button>
+      <button class="btn alt" type="submit" data-via="mail" style="margin-left:0">Imeeliidhaan ergi</button>
+    </form>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap"><span>© <span id="yr"></span> INA Life & Wealth Academy</span><span>Qopheessaa: Ibsan Naaji Ahmed</span></div></footer>
+<a class="float" id="floatWa" href="#" aria-label="WhatsAppiin nu quunnami">WhatsApp</a>
+
+<script>
+(function(){
+  var PHONE="251944615768", EMAIL="ibsannaji@gmail.com";
+  // Galmoota ragaa: ragaa haaraa itti dabaluuf sarara haaraa guuti.
+  // Fakkeenya: "INA-2026-0002":{name:"Maqaa",course:"Kutaa",date:"2026-10-05"}. Sarara demo INA-2026-0001 haquu dagatin.
+  var REGISTRY={"INA-2026-0001":{name:"Fakkeenya (demo)",course:"Financial Literacy & Wealth Creation",date:"-",demo:1}};
+
+  var $=function(s,r){return (r||document).querySelector(s)};
+  var wa=function(t){return "https://wa.me/"+PHONE+"?text="+encodeURIComponent(t)};
+  $("#yr").textContent=new Date().getFullYear();
+  ["#joinWa","#floatWa"].forEach(function(s){var a=$(s);a.href=wa("Akkam bultan! INA Life & Wealth Academy waa'ee barnootaa fi miseensummaa beekuu barbaada.");a.target="_blank";a.rel="noopener"});
+
+  var menu=$(".menu"),nav=$("#nav");
+  menu.addEventListener("click",function(){var o=nav.classList.toggle("open");menu.setAttribute("aria-expanded",o)});
+  nav.addEventListener("click",function(e){if(e.target.tagName==="A"){nav.classList.remove("open");menu.setAttribute("aria-expanded","false")}});
+
+  var f=$("#enrollForm");
+  document.addEventListener("click",function(e){
+    var d=e.target.getAttribute&&e.target.getAttribute("data-pick"),p=e.target.getAttribute&&e.target.getAttribute("data-plan");
+    if(e.target.getAttribute&&e.target.getAttribute("data-founding"))f.founding.checked=true;
+    if(d){f.dept.value=d}
+    if(d!==null&&d!==undefined&&e.target.getAttribute("data-pick")!==null)location.hash="galmaa";
+    if(p){for(var i=0;i<f.plan.options.length;i++){if(f.plan.options[i].text.indexOf(p)===0)f.plan.selectedIndex=i}location.hash="galmaa"}
+  });
+
+  function clearErr(form){form.querySelectorAll(".err").forEach(function(x){x.textContent=""})}
+  function setErr(form,n,m){var x=form.querySelector('[data-for="'+n+'"]');if(x)x.textContent=m}
+
+  f.addEventListener("submit",function(e){
+    e.preventDefault();clearErr(f);var bad=false,v=function(n){return f[n].value.trim()};
+    if(v("name").length<3){setErr(f,"name","Maqaa guutuu galchi.");bad=true}
+    var digits=v("phone").replace(/\D/g,"");
+    if(digits.length<9||digits.length>13){setErr(f,"phone","Lakkoofsa bilbilaa sirrii galchi (fknf. 0944615768).");bad=true}
+    if(!v("dept")){setErr(f,"dept","Kutaa filadhu.");bad=true}
+    if(!v("plan")){setErr(f,"plan","Karoora filadhu.");bad=true}
+    if(bad)return;
+    var id="ENR-"+Date.now().toString(36).toUpperCase();
+    var rec={id:id,name:v("name"),phone:v("phone"),dept:v("dept"),plan:v("plan"),at:new Date().toISOString()};
+    try{var all=JSON.parse(localStorage.getItem("ina_enrollments")||"[]");all.push(rec);localStorage.setItem("ina_enrollments",JSON.stringify(all))}catch(x){}
+    var msg="Akkam bultan! Galmaa'insa haaraa"+(f.founding.checked?" (Founding 100)":"")+":\nLakk.: "+id+"\nMaqaa: "+rec.name+"\nBilbila: "+rec.phone+"\nKutaa: "+rec.dept+"\nKaroora: "+rec.plan+"\nKaffaltii akkamitti raawwadhu?";
+    var ok=$("#enrollOk");
+    ok.hidden=false;
+    ok.innerHTML="<p><b>Galatoomi, "+esc(rec.name)+"!</b> Lakkoofsi galmaa'insa kee: <b>"+id+"</b></p><p>Ergaa kee WhatsAppiin ergi, kanaan galmaa'insi kee xumurama.</p><p><a class='btn' target='_blank' rel='noopener' href='"+wa(msg)+"'>WhatsAppiin ergi</a> <a href='mailto:"+EMAIL+"?subject="+encodeURIComponent("Galmaa'insa "+id)+"&body="+encodeURIComponent(msg)+"'>ykn imeeliidhaan ergi</a></p>";
+    ok.scrollIntoView({behavior:"smooth",block:"center"});
+    window.open(wa(msg),"_blank","noopener");
+    f.reset();
+  });
+
+  function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+
+  $("#verifyForm").addEventListener("submit",function(e){
+    e.preventDefault();var id=this.id.value.trim().toUpperCase(),out=$("#verifyOut");out.hidden=false;
+    if(!id){out.innerHTML="<p>Lakkoofsa ragaa galchi.</p>";return}
+    var r=REGISTRY[id];
+    out.innerHTML=r?"<p><b>Ragaan dhugaa dha."+(r.demo?" (FAKKEENYA qofa)":"")+"</b></p><p>Maqaa: "+esc(r.name)+"</p><p>Kutaa: "+esc(r.course)+"</p><p>Guyyaa: "+esc(r.date)+"</p>"
+      :"<p><b>Lakkoofsi "+esc(id)+" hin argamne.</b> Lakkoofsa deebi'ii mirkaneessi, yoo ta'uu baate "+EMAIL+" quunnami.</p>";
+  });
+
+  document.querySelectorAll(".wag").forEach(function(a){a.href=wa("Akkam bultan! "+a.getAttribute("data-g")+" irratti odeeffannoo/makamuu barbaada.");a.target="_blank";a.rel="noopener"});
+  var c=$("#contactForm"),via="wa";
+  c.querySelectorAll("button").forEach(function(b){b.addEventListener("click",function(){via=b.getAttribute("data-via")})});
+  c.addEventListener("submit",function(e){
+    e.preventDefault();clearErr(c);var m=c.msg.value.trim();
+    if(m.length<3){setErr(c,"msg","Ergaa kee barreessi.");return}
+    var t=(c.name.value.trim()?"Maqaa: "+c.name.value.trim()+"\n":"")+m;
+    if(via==="mail")location.href="mailto:"+EMAIL+"?subject="+encodeURIComponent("Ergaa marsariitii irraa")+"&body="+encodeURIComponent(t);
+    else window.open(wa(t),"_blank","noopener");
+    c.reset();
+  });
+})();
+</script>
+</body>
+</html>

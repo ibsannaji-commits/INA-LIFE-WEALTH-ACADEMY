@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="om">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Motivation, Mindset & Personal Development | INA LWA</title>
+  <meta name="description" content="Motivation, Mindset & Personal Development — Of Beekuu, Growth Mindset, Confidence, Discipline, Goals, Habits, Leadership, 90-Day Transformation. Kursii fi Leenjii Guutuu.">
+  <link rel="icon" type="image/png" href="ina-logo.png">
+  <style>
+    :root {
+      --gold: #D4AF37;
+      --gold-light: #F5D76E;
+      --gold-dark: #B8860B;
+      --green: #1B8A3E;
+      --green-light: #2ECC71;
+      --green-dark: #0E5C28;
+      --blue: #3B82F6;
+      --blue-light: #60A5FA;
+      --dark: #0A0A0A;
+      --dark-card: #141414;
+      --text: #F5F5F5;
+      --text-muted: #A0A0A0;
+      --radius: 14px;
+      --shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--dark); color: var(--text); line-height: 1.65;
+    }
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(10,10,10,0.94); backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(212,175,55,0.2);
+    }
+    .nav-container {
+      max-width: 1200px; margin: 0 auto; padding: 0.7rem 1.4rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo-nav {
+      display: flex; align-items: center; gap: 0.7rem;
+      text-decoration: none; color: var(--gold); font-weight: 700;
+    }
+    .logo-nav img { height: 42px; }
+    nav ul { display: flex; list-style: none; gap: 1.4rem; }
+    nav a {
+      color: var(--text-muted); text-decoration: none;
+      font-size: 0.9rem; font-weight: 500; transition: color 0.2s;
+    }
+    nav a:hover { color: var(--gold); }
+    .btn {
+      display: inline-block; padding: 0.65rem 1.4rem;
+      border-radius: 50px; font-weight: 600; text-decoration: none;
+      transition: all 0.25s; border: none; cursor: pointer; font-size: 0.9rem;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: #111; box-shadow: 0 4px 18px rgba(212,175,55,0.3);
+    }
+    .btn-primary:hover { transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent; border: 2px solid var(--gold); color: var(--gold);
+    }
+    .btn-outline:hover { background: var(--gold); color: #111; }
+    .mobile-toggle {
+      display: none; background: none; border: none;
+      color: var(--gold); font-size: 1.5rem; cursor: pointer;
+    }
+
+    .hero {
+      min-height: 90vh; display: flex; align-items: center;
+      padding: 6.5rem 1.4rem 4rem;
+      background:
+        radial-gradient(ellipse at 25% 20%, rgba(59,130,246,0.1) 0%, transparent 45%),
+        radial-gradient(ellipse at 75% 70%, rgba(212,175,55,0.1) 0%, transparent 50%),
+        var(--dark);
+    }
+    .hero-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.25fr 1fr; gap: 2.5rem; align-items: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(59,130,246,0.12);
+      border: 1px solid rgba(59,130,246,0.3);
+      color: var(--blue-light);
+      padding: 0.35rem 0.9rem; border-radius: 20px;
+      font-size: 0.8rem; font-weight: 600; margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-size: clamp(1.75rem, 4vw, 2.55rem);
+      font-weight: 800; line-height: 1.25; margin-bottom: 0.7rem;
+      background: linear-gradient(90deg, var(--blue-light), var(--gold), var(--green-light));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero .subtitle {
+      color: var(--text-muted); font-size: 1.05rem; margin-bottom: 1.4rem;
+    }
+    .hero-meta {
+      display: flex; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 1.6rem;
+    }
+    .meta-item {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 0.45rem 0.85rem; border-radius: 10px;
+      font-size: 0.85rem; color: var(--text-muted);
+    }
+    .meta-item strong { color: var(--gold); }
+    .hero-buttons { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+    .hero-card {
+      background: var(--dark-card);
+      border: 1px solid rgba(59,130,246,0.25);
+      border-radius: var(--radius); padding: 1.7rem;
+      box-shadow: var(--shadow);
+    }
+    .hero-card h3 { color: var(--blue-light); font-size: 1.05rem; margin-bottom: 0.9rem; }
+    .hero-card ul { list-style: none; }
+    .hero-card li {
+      padding: 0.38rem 0; color: var(--text-muted); font-size: 0.9rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .hero-card li::before { content: "✓"; color: var(--green-light); font-weight: 700; }
+
+    section { padding: 4.2rem 1.4rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-title { text-align: center; margin-bottom: 2.3rem; }
+    .section-title h2 {
+      font-size: clamp(1.55rem, 3.3vw, 2.15rem);
+      color: var(--gold); font-weight: 700; margin-bottom: 0.35rem;
+    }
+    .section-title p { color: var(--text-muted); }
+
+    .courses-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.3rem;
+    }
+    .course-box {
+      background: var(--dark-card);
+      border: 1px solid rgba(212,175,55,0.14);
+      border-radius: var(--radius); padding: 1.6rem;
+      transition: all 0.3s; position: relative; overflow: hidden;
+    }
+    .course-box::before {
+      content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--blue), var(--gold), var(--green));
+    }
+    .course-box:hover {
+      transform: translateY(-5px);
+      border-color: rgba(59,130,246,0.35);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.45);
+    }
+    .course-num {
+      font-size: 0.78rem; font-weight: 700; color: var(--blue-light);
+      letter-spacing: 1px; margin-bottom: 0.4rem;
+    }
+    .course-box h3 { color: var(--gold); font-size: 1.1rem; margin-bottom: 0.5rem; }
+    .course-box p { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 0.8rem; }
+    .course-box .weeks { font-size: 0.82rem; color: var(--gold-light); font-weight: 600; }
+
+    .curriculum { background: #0C0C0C; }
+    .module-group { margin-bottom: 2.3rem; }
+    .module-group-title {
+      display: flex; align-items: center; gap: 0.75rem;
+      margin-bottom: 1.1rem; padding-bottom: 0.55rem;
+      border-bottom: 1px solid rgba(212,175,55,0.2);
+    }
+    .module-group-title .badge {
+      background: linear-gradient(135deg, var(--blue), #2563EB);
+      color: #fff; font-weight: 700; font-size: 0.78rem;
+      padding: 0.28rem 0.65rem; border-radius: 8px;
+    }
+    .module-group-title h3 { color: var(--gold); font-size: 1.15rem; }
+    .modules-list { display: grid; gap: 0.55rem; }
+    .module-item {
+      background: var(--dark-card);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px; padding: 0.85rem 1rem;
+      display: flex; align-items: flex-start; gap: 0.85rem;
+      transition: border-color 0.2s;
+    }
+    .module-item:hover { border-color: rgba(59,130,246,0.35); }
+    .module-num {
+      min-width: 34px; height: 34px;
+      background: rgba(59,130,246,0.12); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 0.82rem; color: var(--blue-light);
+    }
+    .module-info h4 { font-size: 0.95rem; color: var(--text); margin-bottom: 0.12rem; }
+    .module-info p { font-size: 0.8rem; color: var(--text-muted); }
+
+    .outcomes-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1rem;
+    }
+    .outcome {
+      background: var(--dark-card);
+      border: 1px solid rgba(212,175,55,0.12);
+      border-radius: 12px; padding: 1.15rem;
+      display: flex; gap: 0.75rem; align-items: flex-start;
+    }
+    .outcome .icon { font-size: 1.3rem; }
+    .outcome h4 { font-size: 0.92rem; color: var(--gold); margin-bottom: 0.15rem; }
+    .outcome p { font-size: 0.82rem; color: var(--text-muted); }
+
+    .path-flow {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 0.5rem; align-items: center;
+    }
+    .path-step {
+      background: var(--dark-card);
+      border: 1px solid rgba(59,130,246,0.25);
+      padding: 0.65rem 1rem; border-radius: 10px;
+      font-weight: 600; font-size: 0.88rem; color: var(--blue-light);
+    }
+    .path-arrow { color: var(--gold); font-size: 1.1rem; }
+
+    .cta-box {
+      background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(212,175,55,0.08));
+      border: 2px solid var(--gold);
+      border-radius: var(--radius); padding: 2.4rem; text-align: center;
+      max-width: 700px; margin: 0 auto;
+      box-shadow: 0 0 40px rgba(59,130,246,0.1);
+    }
+    .cta-box h2 { color: var(--gold); margin-bottom: 0.7rem; }
+    .cta-box p { color: var(--text-muted); margin-bottom: 1.4rem; }
+
+    footer {
+      background: #080808;
+      border-top: 1px solid rgba(212,175,55,0.12);
+      padding: 2.3rem 1.4rem 1.4rem; text-align: center;
+    }
+    footer img { width: 80px; margin-bottom: 0.7rem; opacity: 0.9; }
+    footer .motto { color: var(--gold); font-weight: 600; margin-bottom: 0.4rem; }
+    footer p { color: var(--text-muted); font-size: 0.86rem; }
+    .copyright { margin-top: 1.1rem; font-size: 0.76rem; color: #555; }
+
+    @media (max-width: 800px) {
+      nav ul { display: none; }
+      .mobile-toggle { display: block; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-card { order: -1; }
+      nav.open ul {
+        display: flex; flex-direction: column;
+        position: absolute; top: 65px; left: 0; right: 0;
+        background: rgba(10,10,10,0.98); padding: 1.2rem;
+        gap: 0.8rem; border-bottom: 1px solid rgba(212,175,55,0.2);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <a href="#home" class="logo-nav">
+        <img src="ina-logo.png" alt="INA LWA">
+        <span>INA LWA</span>
+      </a>
+      <nav id="mainNav">
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#courses">Courses</a></li>
+          <li><a href="#curriculum">Curriculum</a></li>
+          <li><a href="#path">90-Day</a></li>
+          <li><a href="#join">Join</a></li>
+        </ul>
+      </nav>
+      <a href="#join" class="btn btn-primary">Galmaa'i</a>
+      <button class="mobile-toggle" onclick="document.getElementById('mainNav').classList.toggle('open')">☰</button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge">🧠 Kitaaba Guddaa · Mindset · Motivation · Growth</div>
+        <h1>Motivation, Mindset & Personal Development</h1>
+        <p class="subtitle">
+          Yaada jijjiiri · Amala fooyyessi · Jireenya kee jijjiiri<br>
+          <strong style="color:var(--blue-light)">Fixed Mindset → Growth Mindset → 90-Day Transformation</strong>
+        </p>
+        <div class="hero-meta">
+          <div class="meta-item"><strong>Boqonnaa:</strong> 24</div>
+          <div class="meta-item"><strong>Kursii:</strong> 3</div>
+          <div class="meta-item"><strong>Yeroo:</strong> Torban 12–16</div>
+          <div class="meta-item"><strong>Qopheessaa:</strong> Ibsan Naaji</div>
+        </div>
+        <div class="hero-buttons">
+          <a href="#curriculum" class="btn btn-primary">Curriculum Ilaali</a>
+          <a href="#join" class="btn btn-outline">Amma Galmaa'i</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <h3>Atis ni baratta:</h3>
+        <ul>
+          <li>Of Beekuu (Self-Awareness)</li>
+          <li>Growth Mindset horachuu</li>
+          <li>Confidence fi Discipline</li>
+          <li>Goal Setting (SMART)</li>
+          <li>Habit Building (Atomic Habits)</li>
+          <li>Time Management</li>
+          <li>Failure irraa barachuu</li>
+          <li>Leadership</li>
+          <li>Motivation & Inspiration</li>
+          <li>90-Day Transformation</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section id="overview">
+    <div class="container">
+      <div class="section-title">
+        <h2>Kaayyoo Waliigalaa</h2>
+        <p>Yaada, amala, hojii fi jireenya kee jijjiiruu</p>
+      </div>
+      <div class="outcomes-grid">
+        <div class="outcome">
+          <span class="icon">🪞</span>
+          <div>
+            <h4>Of Beekuu</h4>
+            <p>Self-awareness, SWOT, strengths & weaknesses</p>
+          </div>
+        </div>
+        <div class="outcome">
+          <span class="icon">🌱</span>
+          <div>
+            <h4>Growth Mindset</h4>
+            <p>Fixed → Growth · Learn from failure</p>
+          </div>
+        </div>
+        <div class="outcome">
+          <span class="icon">💪</span>
+          <div>
+            <h4>Confidence & Discipline</h4>
+            <p>Self-belief + consistent action</p>
+          </div>
+        </div>
+        <div class="outcome">
+          <span class="icon">🎯</span>
+          <div>
+            <h4>Goal Setting</h4>
+            <p>SMART goals · Life vision</p>
+          </div>
+        </div>
+        <div class="outcome">
+          <span class="icon">🔄</span>
+          <div>
+            <h4>Habit Building</h4>
+            <p>Atomic Habits · Habit Loop</p>
+          </div>
+        </div>
+        <div class="outcome">
+          <span class="icon">⏰</span>
+          <div>
+            <h4>Time Management</h4>
+            <p>Prioritize · Focus · Deep Work</p>
+          </div>
+        </div>
+        <div class="outcome">
+          <span class="icon">👑</span>
+          <div>
+            <h4>Leadership</h4>
+            <p>Lead yourself first, then others</p>
+          </div>
+        </div>
+        <div class="outcome">
+          <span class="icon">🚀</span>
+          <div>
+            <h4>90-Day Transformation</h4>
+            <p>Mindset → Skill → Execution</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 COURSES -->
+  <section id="courses">
+    <div class="container">
+      <div class="section-title">
+        <h2>Kursii Sadii</h2>
+        <p>Boqonnaa 24 → Kursii 3 keessatti qoodame</p>
+      </div>
+      <div class="courses-grid">
+        <div class="course-box">
+          <div class="course-num">KURSII 1</div>
+          <h3>Mindset Jijjiiruu</h3>
+          <p>Of Beekuu, Growth Mindset, Confidence, Discipline, Goal Setting, Habits, Time Management, Failure & Leadership.</p>
+          <div class="weeks">Boqonnaa 1–9 · Torban 8</div>
+        </div>
+        <div class="course-box">
+          <div class="course-num">KURSII 2</div>
+          <h3>Motivation & Inspiration</h3>
+          <p>Intrinsic vs Extrinsic motivation, inspiration sources, staying motivated, purpose & meaning.</p>
+          <div class="weeks">Boqonnaa 10–14 · Torban 4–6</div>
+        </div>
+        <div class="course-box">
+          <div class="course-num">KURSII 3</div>
+          <h3>90-Day Transformation</h3>
+          <p>Day 1–30 Mindset · Day 31–60 Skill · Day 61–90 Execution. Action Plan + Tracking.</p>
+          <div class="weeks">Boqonnaa 15–17 · Guyyaa 90</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CURRICULUM -->
+  <section class="curriculum" id="curriculum">
+    <div class="container">
+      <div class="section-title">
+        <h2>Curriculum Guutuu</h2>
+        <p>Boqonnaa 1–24 — lesson tokkoon tokkoon</p>
+      </div>
+
+      <!-- KUTAA 1 -->
+      <div class="module-group">
+        <div class="module-group-title">
+          <span class="badge">KUTAA 1</span>
+          <h3>Seensa fi Bu'uura (Boqonnaa 1)</h3>
+        </div>
+        <div class="modules-list">
+          <div class="module-item">
+            <div class="module-num">01</div>
+            <div class="module-info">
+              <h4>Seensa Kitaabaa</h4>
+              <p>Kaayyoo, fayyadamtoota, akkaataa itti fayyadamuu, mallattoo, Mindset / Motivation / Personal Development bu'uura</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KUTAA 2 -->
+      <div class="module-group">
+        <div class="module-group-title">
+          <span class="badge">KURSII 1</span>
+          <h3>Mindset Jijjiiruu (Boqonnaa 2–9)</h3>
+        </div>
+        <div class="modules-list">
+          <div class="module-item">
+            <div class="module-num">02</div>
+            <div class="module-info">
+              <h4>Of Beekuu (Self-Awareness)</h4>
+              <p>Dandeettii & dadhabbii, sodaa & hawwii, SWOT Analysis, “Ani Eena?”</p>
+            </div>
+          </div>
+          <div class="module-item">
+            <div class="module-num">03</div>
+            <div class="module-info">
+              <h4>Confidence (Ofitti Amanamummaa)</h4>
+              <p>Self-esteem, self-belief, building confidence through action</p>
+            </div>
+          </div>
+          <div class="module-item">
+            <div class="module-num">04</div>
+            <div class="module-info">
+              <h4>Discipline (Cichaa)</h4>
+              <p>Self-control, consistency, delayed gratification, willpower</p>
+            </div>
+          </div>
+          <div class="module-item">
+            <div class="module-num">05</div>
+            <div class="module-info">
+              <h4>Goal Setting</h4>
+              <p>SMART goals, short / medium / long-term, life vision</p>
+            </div>
+          </div>
+          <div class="module-item">
+            <div class="module-num">06</div>
+            <div class="module-info">
+              <h4>Habit Building</h4>
+              <p>Habit Loop, Atomic Habits, habit stacking, environment design</p>
+            </div>
+          </div>
+          <div class="module-item">
+            <div class="module-num">07</div>
+            <div class="module-info">
+              <h4>Time Management</h4>
+              <p>Prioritization, Eisenhower Matrix, Time blocking, Pomodoro, Deep Work</p>
+            </div>
+          </div>
+          <div class="module-item">
+            <div class="module-num">08</div>
+            <div class="module-info">
+              <h4>Failure (Kufiinsa irraa Barachuu)</h4>
+              <p>Reframe failure, learn fast, bounce back, growth through setbacks</p>
+            </div>
+          </div>
+          <div class="module-item">
+            <div class="module-num">09</div>
+            <div class="module-info">
+              <h4>Leadership</h4>
+              <p>Lead yourself first, influence others, servant leadership basics</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KUTAA 3 -->
+      <div class="module-group">
+        <div class="module-group-title">
+          <span class="badge">KURSII 2</span>
+          <h3>Motivation & Inspiration (Boqonnaa 10–14)</h3>
+        </div>
+        <div class="modules-list">
+          <div class="module-item">
+            <div class="module-num">10</div>
+            <div class="module-info">
+              <h4>Motivation</h4>
+              <p>Intrinsic vs Extrinsic, how motivation works, sustaining drive</p>
+            </div>
+          </div>
+          <div class="module-item">
+            <div class="module-num">11</div>
+            <div class="module-info">
+              <h4>Inspiration</h4>
+              <p>Sources of inspiration, role models, books, environment</p>
+            </div>
+          </div>
+          <div class="module-item">
+            <div class="module-num">12</div>
+            <div class="module-info">
+              <h4>Purpose & Meaning</h4>
+              <p>Why you do what you do · Ikigai basics · Life purpose</p>
+            </div>
+          </div>
+          <div class="module-item">
+            <div class="module-num">13</div>
+            <div class="module-info">
+              <h4>Staying Motivated</h4>
+              <p>When motivation fades · Systems over feelings · Accountability</p>
+            </div>
+          </div>
+          <div class="module-item">
+            <div class="module-num">14</div>
+            <div class="module-info">
+              <h4>Action Plan</h4>
+              <p>Turn inspiration into concrete daily actions</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KUTAA 4 -->
+      <div class="module-group">
+        <div class="module-group-title">
+          <span class="badge">KURSII 3</span>
+          <h3>90-Day Transformation (Boqonnaa 15–17)</h3>
+        </div>
+        <div class="modules-list">
+          <div class="module-item">
+            <div class="module-num">15</div>
+            <div class="module-info">
+              <h4>Day 1–30: Mindset Phase</h4>
+              <p>Daily mindset practices, journaling, belief work, identity shift</p>
+            </div>
+          </div>
+          <div class="module-item">
+            <div class="module-num">16</div>
+            <div class="module-info">
+              <h4>Day 31–60: Skill Phase</h4>
+              <p>Build one key skill, deliberate practice, feedback loops</p>
+            </div>
+          </div>
+          <div class="module-item">
+            <div class="module-num">17</div>
+            <div class="module-info">
+              <h4>Day 61–90: Execution Phase</h4>
+              <p>Ship work, track results, review & adjust, celebrate wins</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EXTRA -->
+      <div class="module-group">
+        <div class="module-group-title">
+          <span class="badge">DABALATA</span>
+          <h3>Leenjii, Meeshaalee & Xumura (Boqonnaa 18–24)</h3>
+        </div>
+        <div class="modules-list">
+          <div class="module-item">
+            <div class="module-num">18–19</div>
+            <div class="module-info">
+              <h4>Leenjii fi Qophii</h4>
+              <p>How to run the course as a facilitator / group training</p>
+            </div>
+          </div>
+          <div class="module-item">
+            <div class="module-num">20–23</div>
+            <div class="module-info">
+              <h4>Meeshaalee fi Templates</h4>
+              <p>Worksheets, trackers, journals, assessment tools</p>
+            </div>
+          </div>
+          <div class="module-item">
+            <div class="module-num">24</div>
+            <div class="module-info">
+              <h4>Xumura fi Kalattii</h4>
+              <p>Final review, commitments, legacy, living a good life</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 90-DAY PATH -->
+  <section id="path">
+    <div class="container">
+      <div class="section-title">
+        <h2>90-Day Transformation Path</h2>
+        <p>Mindset → Skill → Execution</p>
+      </div>
+      <div class="path-flow">
+        <div class="path-step">Day 1–30 · Mindset</div>
+        <span class="path-arrow">→</span>
+        <div class="path-step">Day 31–60 · Skill</div>
+        <span class="path-arrow">→</span>
+        <div class="path-step">Day 61–90 · Execution</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOIN -->
+  <section id="join">
+    <div class="container">
+      <div class="cta-box">
+        <h2>🧠 Mindset Jijjiiruu Jalqabi</h2>
+        <p>
+          Kursii kana INA Life & Wealth Academy — Mindset & Motivation Department keessatti argatta.<br>
+          Membership filadhu → Group “01 – Mindset & Motivation” seeni → Baradhu.
+        </p>
+        <div style="display:flex; gap:0.8rem; justify-content:center; flex-wrap:wrap;">
+          <a href="index.html" class="btn btn-primary">INA Academy Website</a>
+          <a href="#curriculum" class="btn btn-outline">Curriculum Debisi</a>
+        </div>
+        <p style="margin-top:1.4rem; font-size:0.88rem; color:var(--text-muted);">
+          Qopheessaa: <strong style="color:var(--gold);">Ibsan Naaji</strong><br>
+          “Jalqabi. Itti fufi. Milkaa'i. Jireenya gaarii jiraadhu.”
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <img src="ina-logo.png" alt="INA LWA">
+    <p class="motto">Learn · Build · Apply · Grow</p>
+    <p>INA LIFE & WEALTH ACADEMY</p>
+    <p style="margin-top:0.4rem;">Motivation, Mindset & Personal Development</p>
+    <p class="copyright">
+      © 2026 INA Life & Wealth Academy · Qopheessaa: Ibsan Naaji
+    </p>
+  </footer>
+
+  <script>
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mainNav').classList.remove('open');
+      });
+    });
+  </script>
+</body>
+</html>

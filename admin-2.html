@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="om">
+<head>
+<meta charset="utf-8">
+<link rel="icon" type="image/png" href="favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>INA LWA | Dashboard</title>
+<style>
+:root{--ink:#0b2e22;--gold:#d4a72c;--mist:#f2f6f1;--white:#fff;--line:#d9e3da;--text:#17251f;--mute:#53665d;--red:#b3261e}
+@media(prefers-color-scheme:dark){:root{--mist:#0e1a15;--white:#12221b;--line:#23382f;--text:#e8f0ea;--mute:#a3b5ab;--red:#ff8a80}}
+*{box-sizing:border-box;margin:0}
+body{font-family:"Segoe UI",system-ui,Roboto,Arial,sans-serif;background:var(--mist);color:var(--text);line-height:1.5}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+header{background:var(--ink);color:#fff;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px;position:sticky;top:0;z-index:5}
+header b{color:var(--gold)}
+.wrap{max-width:1100px;margin:0 auto;padding:18px 16px}
+.btn{font:inherit;font-weight:600;border:0;border-radius:8px;padding:9px 14px;background:var(--gold);color:#1a1405;cursor:pointer;text-decoration:none;display:inline-block}
+.btn.sm{padding:5px 10px;font-size:13px}.btn.gh{background:transparent;border:1px solid currentColor;color:inherit}
+input,select,textarea{font:inherit;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--white);color:var(--text)}
+.login{max-width:360px;margin:60px auto;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:24px;display:grid;gap:12px}
+.login input{width:100%}
+.err{color:var(--red);font-size:14px;min-height:1.2em}
+.stats{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));margin-bottom:18px}
+.stat{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:14px}
+.stat b{font-size:26px;display:block}.stat span{color:var(--mute);font-size:14px}
+.tabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+.tabs button{font:inherit;border:1px solid var(--line);background:var(--white);color:var(--text);padding:8px 14px;border-radius:8px;cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.bar input{flex:1;min-width:160px}
+.tw{overflow-x:auto;background:var(--white);border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--mist);position:sticky;top:0}
+.empty{padding:26px;text-align:center;color:var(--mute)}
+.fnd{background:var(--gold);color:#1a1405;border-radius:6px;padding:1px 6px;font-size:12px;font-weight:700}
+.msg{white-space:pre-wrap;max-width:420px}
+.add{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));margin-bottom:12px;background:var(--white);border:1px solid var(--line);border-radius:12px;padding:14px}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<header><div style="display:flex;align-items:center;gap:8px"><img src="ina-mark.png" alt="" width="34" height="28"><span><b>INA LWA</b> Dashboard</span></div><button class="btn gh sm" id="out" hidden>Ba'i</button></header>
+
+<form class="login" id="login">
+  <h2>Seeni</h2>
+  <input name="email" type="email" placeholder="Imeelii" autocomplete="username" required>
+  <input name="pw" type="password" placeholder="Jecha icciitii" autocomplete="current-password" required>
+  <button class="btn" type="submit">Seeni</button>
+  <div class="err" id="lerr" role="alert"></div>
+</form>
+
+<div class="wrap" id="app" hidden>
+  <div class="stats" id="stats"></div>
+  <div class="tabs" role="tablist">
+    <button role="tab" aria-selected="true" data-t="enr">Galmaa'insa</button>
+    <button role="tab" aria-selected="false" data-t="msg">Ergaawwan</button>
+    <button role="tab" aria-selected="false" data-t="cer">Ragaawwan</button>
+  </div>
+  <div class="err" id="gerr" role="alert"></div>
+
+  <div id="p-enr">
+    <div class="bar">
+      <input id="q" type="search" placeholder="Maqaa, bilbila ykn lakkoofsa barbaadi">
+      <select id="fs"><option value="">Haala hunda</option><option>new</option><option>contacted</option><option>paid</option><option>active</option><option>cancelled</option></select>
+      <select id="fd"><option value="">Kutaa hunda</option><option>Mindset & Motivation</option><option>Money & Wealth</option><option>Love & Life</option><option>Digital Marketing & Online Income</option></select>
+      <button class="btn gh" id="csv">CSV buusi</button>
+      <button class="btn" id="ref">Haaromsi</button>
+    </div>
+    <div class="tw"><table><thead><tr><th>Guyyaa</th><th>Maqaa</th><th>Bilbila</th><th>Kutaa</th><th>Karoora</th><th>Haala</th><th></th></tr></thead><tbody id="tb"></tbody></table></div>
+  </div>
+
+  <div id="p-msg" hidden><div class="tw"><table><thead><tr><th>Guyyaa</th><th>Maqaa</th><th>Ergaa</th></tr></thead><tbody id="mb"></tbody></table></div></div>
+
+  <div id="p-cer" hidden>
+    <form class="add" id="addc">
+      <input name="cert_id" placeholder="INA-2026-0002" required>
+      <input name="student_name" placeholder="Maqaa barataa" required>
+      <input name="course" placeholder="Course" required>
+      <input name="instructor" placeholder="Barsiisaa">
+      <input name="student_email" type="email" placeholder="Imeelii barataa (barataan akka argatuuf)">
+      <input name="hours" type="number" min="1" placeholder="Sa'aatii">
+      <input name="completion_date" type="date">
+      <button class="btn" type="submit">Ragaa dabali</button>
+    </form>
+    <div class="tw"><table><thead><tr><th>ID</th><th>Barataa</th><th>Course</th><th>Guyyaa</th><th>Haala</th><th></th></tr></thead><tbody id="cb"></tbody></table></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  // index.html keessatti SB_URL fi SB_KEY (anon key) fayyadamte sana asitti galchi.
+  var SB_URL="", SB_KEY="";
+  var tok=sessionStorage.getItem("ina_tok")||"", D={enr:[],msg:[],cer:[]};
+  var $=function(s){return document.querySelector(s)};
+  var esc=function(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})};
+  var fmt=function(d){return d?new Date(d).toLocaleString("en-GB",{dateStyle:"medium",timeStyle:"short"}):"-"};
+
+  function api(method,path,body,prefer){
+    var h={"apikey":SB_KEY,"Authorization":"Bearer "+tok,"Content-Type":"application/json"};
+    if(prefer)h.Prefer=prefer;
+    return fetch(SB_URL.replace(/\/$/,"")+"/rest/v1/"+path,{method:method,headers:h,body:body?JSON.stringify(body):undefined}).then(function(r){
+      if(r.status===401){logout();throw new Error("Yeroon kee dhume. Deebi'ii seeni.")}
+      if(!r.ok)return r.text().then(function(t){throw new Error("Dogoggora "+r.status+": "+t.slice(0,160))});
+      return r.status===204||method!=="GET"?null:r.json();
+    });
+  }
+  function gerr(e){$("#gerr").textContent=e?(e.message||e):""}
+
+  if(!SB_URL||!SB_KEY){$("#lerr").textContent="SB_URL fi SB_KEY admin.html keessatti hin galchamne. SETUP.md ilaali."}
+  $("#login").addEventListener("submit",function(e){
+    e.preventDefault();if(!SB_URL||!SB_KEY)return;$("#lerr").textContent="";
+    fetch(SB_URL.replace(/\/$/,"")+"/auth/v1/token?grant_type=password",{method:"POST",headers:{"apikey":SB_KEY,"Content-Type":"application/json"},body:JSON.stringify({email:this.email.value.trim(),password:this.pw.value})})
+      .then(function(r){return r.json()}).then(function(j){
+        if(!j.access_token)throw new Error("Imeelii ykn jecha icciitii dogoggora.");
+        tok=j.access_token;sessionStorage.setItem("ina_tok",tok);start();
+      }).catch(function(x){$("#lerr").textContent=x.message||"Interneetii hin argamne."});
+  });
+  function logout(){tok="";sessionStorage.removeItem("ina_tok");$("#app").hidden=true;$("#login").hidden=false;$("#out").hidden=true}
+  $("#out").addEventListener("click",logout);
+
+  function start(){
+    $("#login").hidden=true;$("#app").hidden=false;$("#out").hidden=false;load();
+  }
+  function load(){
+    gerr("");
+    Promise.all([api("GET","enrollments?select=*&order=created_at.desc&limit=1000"),api("GET","contact_messages?select=*&order=created_at.desc&limit=500"),api("GET","certificates?select=*&order=created_at.desc&limit=500")])
+      .then(function(r){D.enr=r[0]||[];D.msg=r[1]||[];D.cer=r[2]||[];draw()}).catch(gerr);
+  }
+
+  function draw(){
+    var n=function(f){return D.enr.filter(f).length};
+    $("#stats").innerHTML=[["Galmaa'insa",D.enr.length],["Haaraa",n(function(x){return x.status==="new"})],["Kafalan",n(function(x){return x.status==="paid"||x.status==="active"})],["Founding 100",n(function(x){return x.founding})],["Ergaawwan",D.msg.length],["Ragaawwan",D.cer.length]]
+      .map(function(s){return "<div class='stat'><b>"+s[1]+"</b><span>"+s[0]+"</span></div>"}).join("");
+    drawEnr();
+    $("#mb").innerHTML=D.msg.length?D.msg.map(function(m){return "<tr><td>"+fmt(m.created_at)+"</td><td>"+esc(m.full_name||"-")+"</td><td class='msg'>"+esc(m.message)+"</td></tr>"}).join(""):"<tr><td colspan=3 class='empty'>Ergaan hin jiru.</td></tr>";
+    $("#cb").innerHTML=D.cer.length?D.cer.map(function(c){return "<tr><td>"+esc(c.cert_id)+"</td><td>"+esc(c.student_name)+"</td><td>"+esc(c.course)+"</td><td>"+esc(c.completion_date||"-")+"</td><td>"+(c.revoked?"haqame":"dhugaa")+"</td><td><button class='btn sm gh' data-rv='"+esc(c.cert_id)+"' data-v='"+(c.revoked?0:1)+"'>"+(c.revoked?"Deebisi":"Haqi")+"</button></td></tr>"}).join(""):"<tr><td colspan=6 class='empty'>Ragaan hin jiru.</td></tr>";
+  }
+  function filtered(){
+    var q=$("#q").value.trim().toLowerCase(),s=$("#fs").value,d=$("#fd").value;
+    return D.enr.filter(function(x){return (!s||x.status===s)&&(!d||x.department===d)&&(!q||(x.full_name+" "+x.phone+" "+x.ref).toLowerCase().indexOf(q)>-1)});
+  }
+  function drawEnr(){
+    var rows=filtered();
+    $("#tb").innerHTML=rows.length?rows.map(function(x){
+      var ph=String(x.phone).replace(/\D/g,"");if(ph.charAt(0)==="0")ph="251"+ph.slice(1);
+      var opts=["new","contacted","paid","active","cancelled"].map(function(s){return "<option"+(s===x.status?" selected":"")+">"+s+"</option>"}).join("");
+      return "<tr><td>"+fmt(x.created_at)+"</td><td>"+esc(x.full_name)+(x.founding?" <span class='fnd'>F100</span>":"")+"<br><small>"+esc(x.ref)+"</small></td><td>"+esc(x.phone)+"</td><td>"+esc(x.department)+"</td><td>"+esc(x.plan)+"</td><td><select data-id='"+esc(x.id)+"'>"+opts+"</select></td><td><a class='btn sm' target='_blank' rel='noopener' href='https://wa.me/"+ph+"'>WhatsApp</a></td></tr>";
+    }).join(""):"<tr><td colspan=7 class='empty'>Galmaa'insi hin argamne.</td></tr>";
+  }
+  ["#q","#fs","#fd"].forEach(function(s){$(s).addEventListener("input",drawEnr)});
+  $("#ref").addEventListener("click",load);
+
+  $("#tb").addEventListener("change",function(e){
+    var id=e.target.getAttribute("data-id");if(!id)return;
+    api("PATCH","enrollments?id=eq."+encodeURIComponent(id),{status:e.target.value},"return=minimal").then(function(){
+      D.enr.forEach(function(x){if(x.id===id)x.status=e.target.value});draw();
+    }).catch(function(x){gerr(x);load()});
+  });
+  $("#cb").addEventListener("click",function(e){
+    var id=e.target.getAttribute("data-rv");if(!id)return;
+    if(e.target.getAttribute("data-v")==="1"&&!confirm(id+" haquu barbaaddaa?"))return;
+    api("PATCH","certificates?cert_id=eq."+encodeURIComponent(id),{revoked:e.target.getAttribute("data-v")==="1"},"return=minimal").then(load).catch(gerr);
+  });
+  $("#addc").addEventListener("submit",function(e){
+    e.preventDefault();var f=this,b={cert_id:f.cert_id.value.trim().toUpperCase(),student_name:f.student_name.value.trim(),course:f.course.value.trim(),instructor:f.instructor.value.trim()||null,completion_date:f.completion_date.value||null,student_email:f.student_email.value.trim().toLowerCase()||null,hours:f.hours.value?parseInt(f.hours.value,10):null};
+    api("POST","certificates",b,"return=minimal").then(function(){f.reset();load()}).catch(gerr);
+  });
+
+  $("#csv").addEventListener("click",function(){
+    var cell=function(v){v=String(v==null?"":v);if(/^[=+\-@\t\r]/.test(v))v="'"+v;return '"'+v.replace(/"/g,'""')+'"'};
+    var rows=[["Guyyaa","Lakk.","Maqaa","Bilbila","Kutaa","Karoora","Founding","Haala"]].concat(filtered().map(function(x){return [x.created_at,x.ref,x.full_name,x.phone,x.department,x.plan,x.founding?"eeyyee":"",x.status]}));
+    var blob=new Blob(["\ufeff"+rows.map(function(r){return r.map(cell).join(",")}).join("\n")],{type:"text/csv"});
+    var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="ina-galmaa-insa.csv";a.click();URL.revokeObjectURL(a.href);
+  });
+
+  document.querySelectorAll(".tabs button").forEach(function(b){b.addEventListener("click",function(){
+    document.querySelectorAll(".tabs button").forEach(function(x){x.setAttribute("aria-selected",x===b)});
+    ["enr","msg","cer"].forEach(function(t){$("#p-"+t).hidden=t!==b.getAttribute("data-t")});
+  })});
+
+  if(tok&&SB_URL&&SB_KEY)start();
+})();
+</script>
+</body>
+</html>

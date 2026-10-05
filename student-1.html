@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="om">
+<head>
+<meta charset="utf-8">
+<link rel="icon" type="image/png" href="favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>INA LWA | Barattoota</title>
+<style>
+:root{--ink:#0b2e22;--gold:#d4a72c;--mist:#f2f6f1;--white:#fff;--line:#d9e3da;--text:#17251f;--mute:#53665d;--red:#b3261e}
+@media(prefers-color-scheme:dark){:root{--mist:#0e1a15;--white:#12221b;--line:#23382f;--text:#e8f0ea;--mute:#a3b5ab;--red:#ff8a80}}
+*{box-sizing:border-box;margin:0}
+body{font-family:"Segoe UI",system-ui,Roboto,Arial,sans-serif;background:var(--mist);color:var(--text);line-height:1.55}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+header{background:var(--ink);color:#fff;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+header a{color:inherit;text-decoration:none}header b{color:var(--gold)}
+.wrap{max-width:860px;margin:0 auto;padding:18px 16px}
+.btn{font:inherit;font-weight:600;border:0;border-radius:8px;padding:9px 14px;background:var(--gold);color:#1a1405;cursor:pointer;text-decoration:none;display:inline-block}
+.btn.sm{padding:5px 10px;font-size:13px}.btn.gh{background:transparent;border:1px solid currentColor;color:inherit}
+input,select{font:inherit;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--mist);color:var(--text);width:100%}
+.box{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:14px}
+.auth{max-width:400px;margin:40px auto}
+form{display:grid;gap:12px}label{font-weight:600;font-size:15px;display:grid;gap:5px}
+.err{color:var(--red);font-size:14px;min-height:1.2em}.okm{color:var(--text);font-size:14px;background:var(--mist);border:1px solid var(--gold);border-radius:8px;padding:10px}
+.tabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+.tabs button{font:inherit;border:1px solid var(--line);background:var(--white);color:var(--text);padding:8px 14px;border-radius:8px;cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin:8px 0 12px}.bar i{display:block;height:100%;background:var(--gold)}
+h3{margin-bottom:4px}.mute{color:var(--mute);font-size:14px}
+.wk{font-weight:700;margin:12px 0 4px;font-size:14px;color:var(--mute)}
+.ls{display:flex;gap:10px;align-items:center;padding:7px 0;border-top:1px solid var(--line)}
+.ls input{width:20px;height:20px;flex:none}.ls span{flex:1}.ls.done span{text-decoration:line-through;color:var(--mute)}
+.st{font-weight:700;border-radius:6px;padding:1px 8px;font-size:13px;background:var(--mist);border:1px solid var(--line)}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<header><a href="index.html" style="display:flex;align-items:center;gap:8px"><img src="ina-mark.png" alt="" width="36" height="30"><span><b>INA</b> LWA</span></a><div><span id="who" class="mute" style="color:#bcd2c5"></span> <button class="btn gh sm" id="out" hidden>Ba'i</button></div></header>
+
+<div class="wrap">
+<div class="box auth" id="auth">
+  <div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-m="in">Seeni</button><button role="tab" aria-selected="false" data-m="up">Galmaa'i</button><button role="tab" aria-selected="false" data-m="rs">Jecha irraanfadhe</button></div>
+  <form id="af" novalidate>
+    <label id="fn" hidden>Maqaa guutuu<input name="name" autocomplete="name"></label>
+    <label>Imeelii<input name="email" type="email" autocomplete="username" required></label>
+    <label id="fp">Jecha icciitii (qubee 8 ol)<input name="pw" type="password" autocomplete="current-password"></label>
+    <button class="btn" type="submit" id="ab">Seeni</button>
+    <div class="err" id="ae" role="alert"></div><div class="okm" id="ao" hidden></div>
+  </form>
+</div>
+
+<div id="app" hidden>
+  <div class="tabs" role="tablist">
+    <button role="tab" aria-selected="true" data-t="c">Course koo</button>
+    <button role="tab" aria-selected="false" data-t="e">Galmaa'insa koo</button>
+    <button role="tab" aria-selected="false" data-t="s">Certificate koo</button>
+  </div>
+  <div class="err" id="ge" role="alert"></div>
+  <div id="p-c"></div>
+  <div id="p-e" hidden></div>
+  <div id="p-s" hidden></div>
+</div>
+</div>
+
+<script>
+(function(){
+  // index.html keessatti SB_URL fi SB_KEY (anon key) fayyadamte sana asitti galchi.
+  var SB_URL="", SB_KEY="";
+  var BASE=SB_URL.replace(/\/$/,"");
+  var S=JSON.parse(sessionStorage.getItem("ina_stu")||"null"), D={}, mode="in";
+  var $=function(s){return document.querySelector(s)};
+  var esc=function(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})};
+  var safeUrl=function(u){return /^https?:\/\//i.test(u||"")?u:""};
+  var STAT={new:"Haaraa",contacted:"Quunnamameera",paid:"Kaffalameera",active:"Hojiirra jira",cancelled:"Haqameera"};
+  function save(s){S=s;if(s)sessionStorage.setItem("ina_stu",JSON.stringify(s));else sessionStorage.removeItem("ina_stu")}
+
+  function authCall(path,body){
+    return fetch(BASE+"/auth/v1/"+path,{method:"POST",headers:{"apikey":SB_KEY,"Content-Type":"application/json"},body:JSON.stringify(body)}).then(function(r){return r.json().then(function(j){j._ok=r.ok;return j})});
+  }
+  function refresh(){
+    if(!S||!S.rt)return Promise.reject();
+    return authCall("token?grant_type=refresh_token",{refresh_token:S.rt}).then(function(j){
+      if(!j.access_token)throw 0;save({tok:j.access_token,rt:j.refresh_token,email:S.email});
+    });
+  }
+  function api(method,path,body,prefer,retried){
+    var h={"apikey":SB_KEY,"Authorization":"Bearer "+S.tok,"Content-Type":"application/json"};if(prefer)h.Prefer=prefer;
+    return fetch(BASE+"/rest/v1/"+path,{method:method,headers:h,body:body?JSON.stringify(body):undefined}).then(function(r){
+      if(r.status===401&&!retried)return refresh().then(function(){return api(method,path,body,prefer,true)},function(){logout();throw new Error("Yeroon kee dhume. Deebi'ii seeni.")});
+      if(!r.ok)return r.text().then(function(t){throw new Error("Dogoggora "+r.status+": "+t.slice(0,140))});
+      return method==="GET"||path.indexOf("rpc/")===0?r.json():null;
+    });
+  }
+  function ge(e){$("#ge").textContent=e?(e.message||e):""}
+
+  // ---- Auth UI
+  if(!SB_URL||!SB_KEY)$("#ae").textContent="SB_URL fi SB_KEY student.html keessatti hin galchamne. SETUP.md ilaali.";
+  document.querySelectorAll("#auth .tabs button").forEach(function(b){b.addEventListener("click",function(){
+    mode=b.getAttribute("data-m");
+    document.querySelectorAll("#auth .tabs button").forEach(function(x){x.setAttribute("aria-selected",x===b)});
+    $("#fn").hidden=mode!=="up";$("#fp").hidden=mode==="rs";
+    $("#ab").textContent={in:"Seeni",up:"Akkaawuntii uumi",rs:"Linkii ergi"}[mode];
+    $("#ae").textContent="";$("#ao").hidden=true;
+  })});
+  $("#af").addEventListener("submit",function(e){
+    e.preventDefault();if(!SB_URL||!SB_KEY)return;var f=this,em=f.email.value.trim(),pw=f.pw.value;
+    $("#ae").textContent="";$("#ao").hidden=true;
+    var bad=function(m){$("#ae").textContent=m};
+    if(!em)return bad("Imeelii galchi.");
+    if(mode==="rs"){
+      return authCall("recover",{email:em}).then(function(){$("#ao").hidden=false;$("#ao").textContent="Imeelii kee yoo galmaa'ee ta'e, linkii jecha haaraa itti ergameera."});
+    }
+    if(pw.length<8)return bad("Jechi icciitii qubee 8 ol ta'uu qaba.");
+    if(mode==="up"){
+      if(f.name.value.trim().length<3)return bad("Maqaa guutuu galchi.");
+      return authCall("signup",{email:em,password:pw,data:{full_name:f.name.value.trim()}}).then(function(j){
+        if(j.access_token){save({tok:j.access_token,rt:j.refresh_token,email:em});return start()}
+        if(!j._ok)return bad(j.msg||j.error_description||"Galmaa'uun hin milkoofne.");
+        $("#ao").hidden=false;$("#ao").textContent="Imeelii kee ilaali, linkii mirkaneessaa tuqi, itti aansuun seeni.";
+      }).catch(function(){bad("Interneetii hin argamne.")});
+    }
+    authCall("token?grant_type=password",{email:em,password:pw}).then(function(j){
+      if(!j.access_token)return bad("Imeelii ykn jecha icciitii dogoggora, ykn imeeliin hin mirkanoofne.");
+      save({tok:j.access_token,rt:j.refresh_token,email:em});start();
+    }).catch(function(){bad("Interneetii hin argamne.")});
+  });
+  function logout(){save(null);$("#app").hidden=true;$("#auth").hidden=false;$("#out").hidden=true;$("#who").textContent=""}
+  $("#out").addEventListener("click",logout);
+
+  // ---- App
+  function start(){
+    $("#auth").hidden=true;$("#app").hidden=false;$("#out").hidden=false;$("#who").textContent=S.email;load();
+  }
+  function load(){
+    ge("");
+    Promise.all([
+      api("GET","enrollments?select=*&order=created_at.desc"),
+      api("GET","courses?select=*&order=position.asc"),
+      api("GET","lessons?select=*&order=week.asc,position.asc"),
+      api("GET","lesson_progress?select=lesson_id"),
+      api("GET","certificates?select=*&order=created_at.desc")
+    ]).then(function(r){D.enr=r[0];D.crs=r[1];D.les=r[2];D.done={};r[3].forEach(function(p){D.done[p.lesson_id]=1});D.cer=r[4];draw()}).catch(ge);
+  }
+  function draw(){drawC();drawE();drawS()}
+
+  function drawC(){
+    var paid=D.enr.some(function(x){return x.status==="paid"||x.status==="active"});
+    if(!D.crs.length){
+      $("#p-c").innerHTML="<div class='box'><h3>Course hin jiru</h3><p class='mute'>"+(paid?"Course kutaa keetiif ammaaf hin dhufne. Dhiyootti ni dabalama.":D.enr.length?"Kaffaltiin kee erga mirkanaa'ee booda course kee as keessatti ni banama. Haala galmaa'insa kee 'Galmaa'insa koo' keessatti ilaali. Kaffaltii: akkaataa kaffaltii marsariitii (index.html#kaffaltii) irratti.":"Dura 'Galmaa'insa koo' keessatti galmaa'insa kee hidhi (lakkoofsa galmaa'insaa fi bilbila galchuun).")+"</p></div>";return;
+    }
+    $("#p-c").innerHTML=D.crs.map(function(c){
+      var ls=D.les.filter(function(l){return l.course_id===c.id}),dn=ls.filter(function(l){return D.done[l.id]}).length,pc=ls.length?Math.round(dn*100/ls.length):0,wk=null,h="";
+      ls.forEach(function(l){
+        if(l.week!==wk){wk=l.week;h+="<div class='wk'>Torbaan "+esc(l.week)+"</div>"}
+        var u=safeUrl(l.url);
+        h+="<div class='ls"+(D.done[l.id]?" done":"")+"'><input type='checkbox' data-l='"+esc(l.id)+"' aria-label='Xumurameera'"+(D.done[l.id]?" checked":"")+"><span>"+esc(l.title)+" <small class='mute'>("+esc({video:"video",pdf:"PDF",live:"live",text:"barreeffama"}[l.kind]||l.kind)+")</small>"+(l.body?"<br><small class='mute'>"+esc(l.body)+"</small>":"")+"</span>"+(u?"<a class='btn sm' target='_blank' rel='noopener noreferrer' href='"+esc(u)+"'>Bani</a>":"")+"</div>";
+      });
+      return "<div class='box'><h3>"+esc(c.title)+"</h3><div class='mute'>"+esc(c.department)+(c.hours?" · sa'aatii "+esc(c.hours):"")+"</div>"+(c.description?"<p>"+esc(c.description)+"</p>":"")+"<div class='bar' aria-hidden='true'><i style='width:"+pc+"%'></i></div><div class='mute'>"+dn+" / "+ls.length+" xumurameera ("+pc+"%)</div>"+(h||"<p class='mute'>Barnoonni dhiyootti ni dabalama.</p>")+"</div>";
+    }).join("");
+  }
+  $("#p-c").addEventListener("change",function(e){
+    var id=e.target.getAttribute("data-l");if(!id)return;
+    var p=e.target.checked?api("POST","lesson_progress",{lesson_id:id},"return=minimal,resolution=ignore-duplicates"):api("DELETE","lesson_progress?lesson_id=eq."+encodeURIComponent(id));
+    p.then(function(){if(e.target.checked)D.done[id]=1;else delete D.done[id];drawC()}).catch(function(x){ge(x);e.target.checked=!e.target.checked});
+  });
+
+  function drawE(){
+    $("#p-e").innerHTML=(D.enr.length?D.enr.map(function(x){return "<div class='box'><h3>"+esc(x.department)+"</h3><div class='mute'>"+esc(x.plan)+" · "+esc(x.ref)+(x.founding?" · Founding 100":"")+"</div><p><span class='st'>"+esc(STAT[x.status]||x.status)+"</span></p></div>"}).join(""):"<div class='box'><p class='mute'>Galmaa'insi kee hin hidhamne.</p></div>")+
+    "<div class='box'><h3>Galmaa'insa kee hidhi</h3><p class='mute'>Lakkoofsa galmaa'insaa (fknf. ENR-XXXXX, galmaa'uu keetti argatte) fi lakkoofsa bilbilaa galmaa'uuf fayyadamte galchi.</p><form id='cf' novalidate><label>Lakkoofsa galmaa'insaa<input name='ref' placeholder='ENR-...'></label><label>Lakkoofsa bilbilaa<input name='ph' type='tel'></label><button class='btn' type='submit'>Hidhi</button><div class='err' id='ce' role='alert'></div></form></div>";
+  }
+  $("#p-e").addEventListener("submit",function(e){
+    e.preventDefault();var f=e.target,ce=$("#ce");ce.textContent="";
+    if(f.ref.value.trim().length<6||f.ph.value.replace(/\D/g,"").length<9){ce.textContent="Lakkoofsa galmaa'insaa fi bilbila sirrii galchi.";return}
+    api("POST","rpc/claim_enrollment",{p_ref:f.ref.value,p_phone:f.ph.value}).then(function(ok){
+      if(ok)load();else ce.textContent="Galmaa'insi hin argamne, ykn duraan nama biraatiin hidhameera. Lakkoofsa mirkaneessi.";
+    }).catch(function(x){ce.textContent=x.message});
+  });
+
+  function drawS(){
+    $("#p-s").innerHTML=D.cer.length?D.cer.map(function(c,i){return "<div class='box'><h3>"+esc(c.course)+"</h3><div class='mute'>"+esc(c.cert_id)+" · "+esc(c.completion_date||"-")+"</div><p><button class='btn sm' data-p='"+i+"'>Maxxansi / PDF</button></p></div>"}).join(""):"<div class='box'><p class='mute'>Certificate hin jiru. Course xumurtee booda asitti mul'ata.</p></div>";
+  }
+  $("#p-s").addEventListener("click",function(e){
+    var i=e.target.getAttribute("data-p");if(i===null)return;var c=D.cer[i],w=window.open("","_blank");if(!w)return ge("Foddaa (popup) hayyami.");
+    w.document.write("<!DOCTYPE html><meta charset=utf-8><title>"+esc(c.cert_id)+"</title><style>@page{size:A4 landscape;margin:0}body{margin:0;font-family:Georgia,serif;text-align:center;color:#0b2e22}.c{margin:24px;border:8px double #d4a72c;padding:60px 40px;min-height:calc(100vh - 48px - 120px)}h1{letter-spacing:4px;margin:0}h2{font-size:34px;margin:18px 0}p{font-size:18px;margin:8px 0}.f{display:flex;justify-content:space-between;margin-top:60px;padding:0 60px}</style><div class=c><h1>INA ACADEMY</h1><p>CERTIFICATE OF COMPLETION</p><p>This certificate is proudly presented to</p><h2>"+esc(c.student_name)+"</h2><p>for successfully completing</p><h2 style='font-size:26px'>"+esc(c.course)+"</h2>"+(c.hours?"<p>Duration: "+esc(c.hours)+" Hours</p>":"")+"<p>Completion Date: "+esc(c.completion_date||"-")+"</p><p>Certificate ID: <b>"+esc(c.cert_id)+"</b></p><div class=f><span>"+esc(c.instructor||"")+"<br>Director / Instructor</span><span>Mirkaneessuuf: marsariitii INA LWA &gt; Ragaa</span></div></div><script>onload=function(){print()}<\/script>");
+    w.document.close();
+  });
+
+  document.querySelectorAll("#app .tabs button").forEach(function(b){b.addEventListener("click",function(){
+    document.querySelectorAll("#app .tabs button").forEach(function(x){x.setAttribute("aria-selected",x===b)});
+    ["c","e","s"].forEach(function(t){$("#p-"+t).hidden=t!==b.getAttribute("data-t")});
+  })});
+
+  if(S&&SB_URL&&SB_KEY)start();
+})();
+</script>
+</body>
+</html>

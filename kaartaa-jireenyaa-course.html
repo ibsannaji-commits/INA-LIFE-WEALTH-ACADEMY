@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="om">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kaartaa Jireenyaa | Love, Relationship & Life | INA LWA</title>
+  <meta name="description" content="Kaartaa Jireenyaa — Love, Relationship & Life. Of Jaallachuu, Emotional Intelligence, Communication, Trust, Healthy Relationship, Marriage & Family. Kursii fi Leenjii Guutuu.">
+  <link rel="icon" type="image/png" href="ina-logo.png">
+  <style>
+    :root {
+      --gold: #D4AF37;
+      --gold-light: #F5D76E;
+      --gold-dark: #B8860B;
+      --green: #1B8A3E;
+      --green-light: #2ECC71;
+      --green-dark: #0E5C28;
+      --rose: #E85A71;
+      --rose-light: #FF8A9B;
+      --dark: #0A0A0A;
+      --dark-card: #141414;
+      --text: #F5F5F5;
+      --text-muted: #A0A0A0;
+      --radius: 14px;
+      --shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--dark); color: var(--text); line-height: 1.65;
+    }
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(10,10,10,0.94); backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(212,175,55,0.2);
+    }
+    .nav-container {
+      max-width: 1200px; margin: 0 auto; padding: 0.7rem 1.4rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo-nav {
+      display: flex; align-items: center; gap: 0.7rem;
+      text-decoration: none; color: var(--gold); font-weight: 700;
+    }
+    .logo-nav img { height: 42px; }
+    nav ul { display: flex; list-style: none; gap: 1.4rem; }
+    nav a {
+      color: var(--text-muted); text-decoration: none;
+      font-size: 0.9rem; font-weight: 500; transition: color 0.2s;
+    }
+    nav a:hover { color: var(--gold); }
+    .btn {
+      display: inline-block; padding: 0.65rem 1.4rem;
+      border-radius: 50px; font-weight: 600; text-decoration: none;
+      transition: all 0.25s; border: none; cursor: pointer; font-size: 0.9rem;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: #111; box-shadow: 0 4px 18px rgba(212,175,55,0.3);
+    }
+    .btn-primary:hover { transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent; border: 2px solid var(--gold); color: var(--gold);
+    }
+    .btn-outline:hover { background: var(--gold); color: #111; }
+    .mobile-toggle {
+      display: none; background: none; border: none;
+      color: var(--gold); font-size: 1.5rem; cursor: pointer;
+    }
+
+    .hero {
+      min-height: 90vh; display: flex; align-items: center;
+      padding: 6.5rem 1.4rem 4rem;
+      background:
+        radial-gradient(ellipse at 20% 20%, rgba(232,90,113,0.1) 0%, transparent 45%),
+        radial-gradient(ellipse at 80% 70%, rgba(212,175,55,0.1) 0%, transparent 50%),
+        var(--dark);
+    }
+    .hero-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.25fr 1fr; gap: 2.5rem; align-items: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(232,90,113,0.12);
+      border: 1px solid rgba(232,90,113,0.3);
+      color: var(--rose-light);
+      padding: 0.35rem 0.9rem; border-radius: 20px;
+      font-size: 0.8rem; font-weight: 600; margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-size: clamp(1.85rem, 4.2vw, 2.7rem);
+      font-weight: 800; line-height: 1.25; margin-bottom: 0.7rem;
+      background: linear-gradient(90deg, var(--rose-light), var(--gold), var(--green-light));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero .subtitle {
+      color: var(--text-muted); font-size: 1.05rem; margin-bottom: 1.4rem;
+    }
+    .hero-meta {
+      display: flex; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 1.6rem;
+    }
+    .meta-item {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 0.45rem 0.85rem; border-radius: 10px;
+      font-size: 0.85rem; color: var(--text-muted);
+    }
+    .meta-item strong { color: var(--gold); }
+    .hero-buttons { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+    .hero-card {
+      background: var(--dark-card);
+      border: 1px solid rgba(232,90,113,0.25);
+      border-radius: var(--radius); padding: 1.7rem;
+      box-shadow: var(--shadow);
+    }
+    .hero-card h3 { color: var(--rose-light); font-size: 1.05rem; margin-bottom: 0.9rem; }
+    .hero-card ul { list-style: none; }
+    .hero-card li {
+      padding: 0.38rem 0; color: var(--text-muted); font-size: 0.9rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .hero-card li::before { content: "♥"; color: var(--rose); font-size: 0.75rem; }
+
+    section { padding: 4.2rem 1.4rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-title { text-align: center; margin-bottom: 2.3rem; }
+    .section-title h2 {
+      font-size: clamp(1.55rem, 3.3vw, 2.15rem);
+      color: var(--gold); font-weight: 700; margin-bottom: 0.35rem;
+    }
+    .section-title p { color: var(--text-muted); }
+
+    .courses-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.3rem;
+    }
+    .course-box {
+      background: var(--dark-card);
+      border: 1px solid rgba(212,175,55,0.14);
+      border-radius: var(--radius); padding: 1.6rem;
+      transition: all 0.3s; position: relative; overflow: hidden;
+    }
+    .course-box::before {
+      content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--rose), var(--gold), var(--green));
+    }
+    .course-box:hover {
+      transform: translateY(-5px);
+      border-color: rgba(232,90,113,0.35);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.45);
+    }
+    .course-num {
+      font-size: 0.78rem; font-weight: 700; color: var(--rose-light);
+      letter-spacing: 1px; margin-bottom: 0.4rem;
+    }
+    .course-box h3 { color: var(--gold); font-size: 1.1rem; margin-bottom: 0.5rem; }
+    .course-box p { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 0.8rem; }
+    .course-box .weeks { font-size: 0.82rem; color: var(--gold-light); font-weight: 600; }
+
+    .curriculum { background: #0C0C0C; }
+    .module-group { margin-bottom: 2.3rem; }
+    .module-group-title {
+      display: flex; align-items: center; gap: 0.75rem;
+      margin-bottom: 1.1rem; padding-bottom: 0.55rem;
+      border-bottom: 1px solid rgba(212,175,55,0.2);
+    }
+    .module-group-title .badge {
+      background: linear-gradient(135deg, var(--rose), #C44A5E);
+      color: #fff; font-weight: 700; font-size: 0.78rem;
+      padding: 0.28rem 0.65rem; border-radius: 8px;
+    }
+    .module-group-title h3 { color: var(--gold); font-size: 1.15rem; }
+    .modules-list { display: grid; gap: 0.55rem; }
+    .module-item {
+      background: var(--dark-card);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px; padding: 0.85rem 1rem;
+      display: flex; align-items: flex-start; gap: 0.85rem;
+      transition: border-color 0.2s;
+    }
+    .module-item:hover { border-color: rgba(232,90,113,0.35); }
+    .module-num {
+      min-width: 34px; height: 34px;
+      background: rgba(232,90,113,0.12); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 0.82rem; color: var(--rose-light);
+    }
+    .module-info h4 { font-size: 0.95rem; color: var(--text); margin-bottom: 0.12rem; }
+    .module-info p { font-size: 0.8rem; color: var(--text-muted); }
+
+    .path-flow {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 0.5rem; align-items: center; margin-top: 1rem;
+    }
+    .path-step {
+      background: var(--dark-card);
+      border: 1px solid rgba(232,90,113,0.25);
+      padding: 0.65rem 1rem; border-radius: 10px;
+      font-weight: 600; font-size: 0.88rem; color: var(--rose-light);
+    }
+    .path-arrow { color: var(--gold); font-size: 1.1rem; }
+
+    .outcomes-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1rem;
+    }
+    .outcome {
+      background: var(--dark-card);
+      border: 1px solid rgba(212,175,55,0.12);
+      border-radius: 12px; padding: 1.15rem;
+      display: flex; gap: 0.75rem; align-items: flex-start;
+    }
+    .outcome .icon { font-size: 1.3rem; }
+    .outcome h4 { font-size: 0.92rem; color: var(--gold); margin-bottom: 0.15rem; }
+    .outcome p { font-size: 0.82rem; color: var(--text-muted); }
+
+    .cta-box {
+      background: linear-gradient(135deg, rgba(232,90,113,0.1), rgba(212,175,55,0.08));
+      border: 2px solid var(--gold);
+      border-radius: var(--radius); padding: 2.4rem; text-align: center;
+      max-width: 700px; margin: 0 auto;
+      box-shadow: 0 0 40px rgba(232,90,113,0.1);
+    }
+    .cta-box h2 { color: var(--gold); margin-bottom: 0.7rem; }
+    .cta-box p { color: var(--text-muted); margin-bottom: 1.4rem; }
+
+    footer {
+      background: #080808;
+      border-top: 1px solid rgba(212,175,55,0.12);
+      padding: 2.3rem 1.4rem 1.4rem; text-align: center;
+    }
+    footer img { width: 80px; margin-bottom: 0.7rem; opacity: 0.9; }
+    footer .motto { color: var(--gold); font-weight: 600; margin-bottom: 0.4rem; }
+    footer p { color: var(--text-muted); font-size: 0.86rem; }
+    .copyright { margin-top: 1.1rem; font-size: 0.76rem; color: #555; }
+
+    @media (max-width: 800px) {
+      nav ul { display: none; }
+      .mobile-toggle { display: block; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-card { order: -1; }
+      nav.open ul {
+        display: flex; flex-direction: column;
+        position: absolute; top: 65px; left: 0; right: 0;
+        background: rgba(10,10,10,0.98); padding: 1.2rem;
+        gap: 0.8rem; border-bottom: 1px solid rgba(212,175,55,0.2);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <a href="#home" class="logo-nav">
+        <img src="ina-logo.png" alt="INA LWA">
+        <span>INA LWA</span>
+      </a>
+      <nav id="mainNav">
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#courses">Courses</a></li>
+          <li><a href="#curriculum">Curriculum</a></li>
+          <li><a href="#path">Path</a></li>
+          <li><a href="#join">Join</a></li>
+        </ul>
+      </nav>
+      <a href="#join" class="btn btn-primary">Galmaa'i</a>
+      <button class="mobile-toggle" onclick="document.getElementById('mainNav').classList.toggle('open')">☰</button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge">❤️ Kitaaba Guddaa · Love · Relationship · Life</div>
+        <h1>Kaartaa Jireenyaa</h1>
+        <p class="subtitle">
+          Love, Relationship & Life<br>
+          <strong style="color:var(--rose-light)">Of Jaallachuu → Healthy Relationship → Jireenya Gaarii</strong>
+        </p>
+        <div class="hero-meta">
+          <div class="meta-item"><strong>Boqonnaa:</strong> 21</div>
+          <div class="meta-item"><strong>Kursii:</strong> 2</div>
+          <div class="meta-item"><strong>Yeroo:</strong> Torban 12–16</div>
+          <div class="meta-item"><strong>Qopheessaa:</strong> Ibsan Naaji</div>
+        </div>
+        <div class="hero-buttons">
+          <a href="#curriculum" class="btn btn-primary">Curriculum Ilaali</a>
+          <a href="#join" class="btn btn-outline">Amma Galmaa'i</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <h3>Atis ni baratta:</h3>
+        <ul>
+          <li>Of Jaallachuu fi Of Kabajuu</li>
+          <li>Of Hubachuu (Self-Awareness)</li>
+          <li>Emotional Intelligence (EI)</li>
+          <li>Attraction & Chemistry</li>
+          <li>Communication fooyyessuu</li>
+          <li>Trust fi Boundaries</li>
+          <li>Healthy Relationship ijaaruu</li>
+          <li>Conflict Resolution</li>
+          <li>Break-up Recovery</li>
+          <li>Fuudhaa / Heeruma & Maatii</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section id="overview">
+    <div class="container">
+      <div class="section-title">
+        <h2>Kaayyoo Waliigalaa</h2>
+        <p>Jaalala, walitti dhufeenya fi jireenya kee hubachuu, guddifachuu fi jiraachuu</p>
+      </div>
+      <div class="outcomes-grid">
+        <div class="outcome">
+          <span class="icon">❤️</span>
+          <div>
+            <h4>Of Jaallachuu</h4>
+            <p>Self-love, self-respect, self-acceptance</p>
+          </div>
+        </div>
+        <div class="outcome">
+          <span class="icon">🧠</span>
+          <div>
+            <h4>Of Hubachuu</h4>
+            <p>Self-awareness, emotions, values, goals</p>
+          </div>
+        </div>
+        <div class="outcome">
+          <span class="icon">💡</span>
+          <div>
+            <h4>Emotional Intelligence</h4>
+            <p>Self-regulation, empathy, social skills</p>
+          </div>
+        </div>
+        <div class="outcome">
+          <span class="icon">✨</span>
+          <div>
+            <h4>Attraction</h4>
+            <p>Physical, emotional, intellectual, spiritual</p>
+          </div>
+        </div>
+        <div class="outcome">
+          <span class="icon">🗣️</span>
+          <div>
+            <h4>Communication</h4>
+            <p>Listen, express, non-violent communication</p>
+          </div>
+        </div>
+        <div class="outcome">
+          <span class="icon">🤝</span>
+          <div>
+            <h4>Trust & Boundaries</h4>
+            <p>Build trust, set healthy limits</p>
+          </div>
+        </div>
+        <div class="outcome">
+          <span class="icon">💑</span>
+          <div>
+            <h4>Healthy Relationship</h4>
+            <p>Respect, love languages, partnership</p>
+          </div>
+        </div>
+        <div class="outcome">
+          <span class="icon">🏠</span>
+          <div>
+            <h4>Marriage & Family</h4>
+            <p>Preparation, responsibility, legacy</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 COURSES -->
+  <section id="courses">
+    <div class="container">
+      <div class="section-title">
+        <h2>Kursii Lama</h2>
+        <p>Boqonnaa 21 → Kursii 2 keessatti qoodame</p>
+      </div>
+      <div class="courses-grid">
+        <div class="course-box">
+          <div class="course-num">KURSII 1</div>
+          <h3>Love & Relationship</h3>
+          <p>Of Jaallachuu, Of Hubachuu, Emotional Intelligence, Attraction, Communication, Trust, Boundaries, Healthy Relationship, Conflict, Break-up Recovery, Marriage Prep, Family.</p>
+          <div class="weeks">Boqonnaa 1–13 · Torban 8–10</div>
+        </div>
+        <div class="course-box">
+          <div class="course-num">KURSII 2</div>
+          <h3>Karaan Jaalalaan Imalu</h3>
+          <p>Of Beekuu → Nama Hubachuu → Walqunnamtii → Amanamummaa → Rakkoo Furuu → Fuuldura Waliin Ijaaruu. Practical 90-day path.</p>
+          <div class="weeks">Boqonnaa 14–20 · Torban 4–6 (Guyyaa 90)</div>
+        </div>
+        <div class="course-box">
+          <div class="course-num">XUMURA</div>
+          <h3>Kalattii & Legacy</h3>
+          <p>Commitment, review, gratitude, next steps, jireenya gaarii, yaadannoo.</p>
+          <div class="weeks">Boqonnaa 21</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CURRICULUM -->
+  <section class="curriculum" id="curriculum">
+    <div class="container">
+      <div class="section-title">
+        <h2>Curriculum Guutuu</h2>
+        <p>Boqonnaa 1–21 — lesson tokkoon tokkoon</p>
+      </div>
+
+      <!-- KURSII 1 -->
+      <div class="module-group">
+        <div class="module-group-title">
+          <span class="badge">KURSII 1</span>
+          <h3>Love & Relationship (Boqonnaa 1–13)</h3>
+        </div>
+        <div class="modules-list">
+          <div class="module-item">
+            <div class="module-num">01</div>
+            <div class="module-info">
+              <h4>Of Jaallachuu (Self-Love)</h4>
+              <p>Of kabajuu, of fudhachuu, of dhiifama, of eeguu, of amantaa — jalqaba jaalalaa</p>
+            </div>
+          </div>
+          <div class="module-item">
+            <div class="module-num">02</div>
+            <div class="module-info">
+              <h4>Of Hubachuu (Self-Awareness)</h4>
+              <p>Miira, yaada, amala, dandeettii, dadhabbii, sodaa, hawwii, kaayyoo, duudhaa</p>
+            </div>
+          </div>
+          <div class="module-item">
+            <div class="module-num">03</div>
+            <div class="module-info">
+              <h4>Emotional Intelligence (EI)</h4>
+              <p>Self-awareness, Self-regulation, Motivation, Empathy, Social Skills · EI vs IQ</p>
+            </div>
+          </div>
+          <div class="module-item">
+            <div class="module-num">04</div>
+            <div class="module-info">
+              <h4>Attraction</h4>
+              <p>Physical, Emotional, Intellectual, Spiritual attraction · Chemistry · Compatibility</p>
+            </div>
+          </div>
+          <div class="module-item">
+            <div class="module-num">05</div>
+            <div class="module-info">
+              <h4>Communication</h4>
+              <p>Active listening, expression, Nonviolent Communication, difficult conversations</p>
+            </div>
+          </div>
+          <div class="module-item">
+            <div class="module-num">06</div>
+            <div class="module-info">
+              <h4>Trust (Amanamummaa)</h4>
+              <p>How trust is built, broken, and rebuilt · Consistency · Honesty</p>
+            </div>
+          </div>
+          <div class="module-item">
+            <div class="module-num">07</div>
+            <div class="module-info">
+              <h4>Boundaries (Daangaa)</h4>
+              <p>Setting healthy boundaries · Saying no · Respecting others’ limits</p>
+            </div>
+          </div>
+          <div class="module-item">
+            <div class="module-num">08</div>
+            <div class="module-info">
+              <h4>Healthy Relationship</h4>
+              <p>Respect, love languages, partnership, mutual growth, red flags vs green flags</p>
+            </div>
+          </div>
+          <div class="module-item">
+            <div class="module-num">09</div>
+            <div class="module-info">
+              <h4>Conflict Resolution</h4>
+              <p>Fight fair, repair attempts, de-escalation, win-win solutions</p>
+            </div>
+          </div>
+          <div class="module-item">
+            <div class="module-num">10</div>
+            <div class="module-info">
+              <h4>Break-up Recovery</h4>
+              <p>Grieving, healing, lessons, moving forward with dignity</p>
+            </div>
+          </div>
+          <div class="module-item">
+            <div class="module-num">11</div>
+            <div class="module-info">
+              <h4>Fuudhaa fi Heeruma</h4>
+              <p>Preparation for marriage · Expectations · Shared vision · Commitment</p>
+            </div>
+          </div>
+          <div class="module-item">
+            <div class="module-num">12</div>
+            <div class="module-info">
+              <h4>Family & Responsibility</h4>
+              <p>Roles, parenting basics, extended family, financial responsibility</p>
+            </div>
+          </div>
+          <div class="module-item">
+            <div class="module-num">13</div>
+            <div class="module-info">
+              <h4>Jaalala, Kabaja fi Itti Gaafatamummaa</h4>
+              <p>Integrating love, respect and responsibility into daily life</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KURSII 2 -->
+      <div class="module-group">
+        <div class="module-group-title">
+          <span class="badge">KURSII 2</span>
+          <h3>Karaan Jaalalaan Imalu (Boqonnaa 14–20)</h3>
+        </div>
+        <div class="modules-list">
+          <div class="module-item">
+            <div class="module-num">14</div>
+            <div class="module-info">
+              <h4>Of Beekuu</h4>
+              <p>Deep self-knowledge as the foundation of the journey</p>
+            </div>
+          </div>
+          <div class="module-item">
+            <div class="module-num">15</div>
+            <div class="module-info">
+              <h4>Nama Hubachuu</h4>
+              <p>Understanding the other person — empathy in action</p>
+            </div>
+          </div>
+          <div class="module-item">
+            <div class="module-num">16</div>
+            <div class="module-info">
+              <h4>Walqunnamtii</h4>
+              <p>Daily communication practices that build connection</p>
+            </div>
+          </div>
+          <div class="module-item">
+            <div class="module-num">17</div>
+            <div class="module-info">
+              <h4>Amanamummaa</h4>
+              <p>Building and protecting trust day by day</p>
+            </div>
+          </div>
+          <div class="module-item">
+            <div class="module-num">18</div>
+            <div class="module-info">
+              <h4>Rakkoo Furuu</h4>
+              <p>Practical conflict tools and repair rituals</p>
+            </div>
+          </div>
+          <div class="module-item">
+            <div class="module-num">19</div>
+            <div class="module-info">
+              <h4>Fuuldura Waliin Ijaaruu</h4>
+              <p>Shared goals, future vision, growing together</p>
+            </div>
+          </div>
+          <div class="module-item">
+            <div class="module-num">20</div>
+            <div class="module-info">
+              <h4>Kalattii (Commitment)</h4>
+              <p>Personal commitments, 90-day action plan, tracking</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- XUMURA -->
+      <div class="module-group">
+        <div class="module-group-title">
+          <span class="badge">XUMURA</span>
+          <h3>Boqonnaa 21 — Xumura & Legacy</h3>
+        </div>
+        <div class="modules-list">
+          <div class="module-item">
+            <div class="module-num">21</div>
+            <div class="module-info">
+              <h4>Xumura, Kalattii, Yaadannoo fi Jireenya Gaarii</h4>
+              <p>Review, gratitude, next steps, legacy, living a good life with love</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PATH -->
+  <section id="path">
+    <div class="container">
+      <div class="section-title">
+        <h2>Karaan Jaalalaan Imalu</h2>
+        <p>The clear path from self to lasting partnership</p>
+      </div>
+      <div class="path-flow">
+        <div class="path-step">Of Beekuu</div>
+        <span class="path-arrow">→</span>
+        <div class="path-step">Nama Hubachuu</div>
+        <span class="path-arrow">→</span>
+        <div class="path-step">Walqunnamtii</div>
+        <span class="path-arrow">→</span>
+        <div class="path-step">Amanamummaa</div>
+        <span class="path-arrow">→</span>
+        <div class="path-step">Rakkoo Furuu</div>
+        <span class="path-arrow">→</span>
+        <div class="path-step">Fuuldura Waliin Ijaaruu</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOIN -->
+  <section id="join">
+    <div class="container">
+      <div class="cta-box">
+        <h2>❤️ Kaartaa Jireenyaa Jalqabi</h2>
+        <p>
+          Kursii kana INA Life & Wealth Academy — Love & Life Department keessatti argatta.<br>
+          Membership filadhu → Group “03 – Love & Life (Kaartaa Jaalalaa)” seeni → Baradhu.
+        </p>
+        <div style="display:flex; gap:0.8rem; justify-content:center; flex-wrap:wrap;">
+          <a href="index.html" class="btn btn-primary">INA Academy Website</a>
+          <a href="#curriculum" class="btn btn-outline">Curriculum Debisi</a>
+        </div>
+        <p style="margin-top:1.4rem; font-size:0.88rem; color:var(--text-muted);">
+          Qopheessaa: <strong style="color:var(--gold);">Ibsan Naaji</strong><br>
+          “Jalqabi. Itti fufi. Milkaa'i. Jireenya gaarii jiraadhu.”
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <img src="ina-logo.png" alt="INA LWA">
+    <p class="motto">Learn · Build · Apply · Grow</p>
+    <p>INA LIFE & WEALTH ACADEMY</p>
+    <p style="margin-top:0.4rem;">Kaartaa Jireenyaa — Love, Relationship & Life</p>
+    <p class="copyright">
+      © 2026 INA Life & Wealth Academy · Qopheessaa: Ibsan Naaji
+    </p>
+  </footer>
+
+  <script>
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mainNav').classList.remove('open');
+      });
+    });
+  </script>
+</body>
+</html>
